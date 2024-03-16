@@ -113,6 +113,13 @@ img {
   /* font-family: var(--second-font); */
 }
 
+.title-main {
+  font-size: 1.2rem;
+  font-weight: var(--font-medium);
+  margin-bottom: 20px;
+  color: var(--black-2-color);
+}
+
 .button-shop {
   margin: 0.5rem 0;
   padding: 10px 25px;
@@ -356,6 +363,123 @@ aside .sidebar a:hover span {
 .section .commercial_title {
   text-align: center;
 }
+
+/* ---------------- Sport Product ---------------- */
+.selection_sport .sport {
+  display: flex;
+  gap: 2rem;
+}
+
+.selection_sport .sport li img {
+  border-radius: var(--border-radius-1);
+  transition: all 0.3s ease;
+}
+
+.selection_sport .sport li:hover img {
+  transform: translateY(-10px);
+}
+
+/* ---------------- Iconic Product ---------------- */
+.box {
+  width: 300px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.slide-img {
+  position: relative;
+}
+.slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+.detail-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px 20px;
+}
+.detail-box .type {
+  display: flex;
+  flex-direction: column;
+}
+.detail-box .type .pr-name {
+  color: #000000;
+  margin: 5px 0px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-right: 8px;
+  font-family: var(--second-font);
+}
+.detail-box .type .pr-type {
+  color: rgba(26, 26, 26, 0.5);
+}
+.detail-box .pr-price {
+  color: #333333;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+.overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(12, 12, 12, 0.7);
+  /* opacity: 0.7;  */
+}
+.buy-btn {
+  width: 160px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #252525;
+  border-radius: 20px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+  visibility: hidden;
+}
+
+.buy-btn a {
+  padding: 10px;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
+.buy-btn a:hover {
+  color: rgb(202, 42, 42);
+  transition: all ease 0.3s;
+}
+
+.slide-img:hover .overlay {
+  visibility: visible;
+  animation: fade 0.5s;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.cs-hidden > li {
+  list-style: none;
+  padding: 0 10px;
+}
+
 /*============================ END MAIN =============================*/
 
 /*============================ REGISTER =============================*/

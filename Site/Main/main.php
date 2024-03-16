@@ -26,14 +26,72 @@
         </div>
     </div>
 
+
+
     <!-- ============================ Select Product By Sport ============================ -->
     <div class="section_2 space-container">
         <!-- ---------------- Title ---------------- -->
-        <h1>Shop By Sport</h1>
+        <h1 class="title-main">Shop By Sport</h1>
 
         <!-- ---------------- Sport Product ---------------- -->
         <div class="selection_sport">
+            <ul class="sport">
+                <li><a href=""><img src="<?= $CONTENT_URL; ?>/Images/poster/football.webp" alt="football"></a>
+                    <span class="sub_title">Football</span>
+                </li>
+                <li><a href=""><img src="<?= $CONTENT_URL; ?>/Images/poster/running.webp" alt="running"></a>
+                    <span class="sub_title">Running</span>
+                </li>
+                <li><a href=""><img src="<?= $CONTENT_URL; ?>/Images/poster/basketball.webp" alt="basketball"></a>
+                    <span class="sub_title">Basketball</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 
+
+
+    <!-- ============================ Select Product By Sport ============================ -->
+    <div class="section_3 space-container">
+        <!-- ---------------- Title ---------------- -->
+        <h1 class="title-main">Always Iconic</h1>
+
+        <!-- ---------------- Iconic Product ---------------- -->
+        <div class="selection_iconic">
+            <ul>
+                <li class="item">
+                    <!-- box-slider -->
+                    <div class="box">
+                        <!-- img -->
+                        <div class="slide-img">
+                            <img src="<?= $CONTENT_URL; ?>/Images/poster/sale11.jpg" alt="running">
+                            <!-- overlay -->
+                            <div class="overlay">
+                                <p href="#" class="buy-btn">
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <a href="#"> <i class="fa-regular fa-heart"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- detail-box -->
+                        <div class="detail-box">
+                            <div class="type">
+                                <a href="#" class="pr-name">
+                                    Jordan
+                                </a>
+                                <span class="pr-type">
+                                    sweater
+                                </span>
+                            </div>
+                            <!-- price -->
+                            <a href="#" class="pr-price">
+                                <span style="margin-right: 10px;">120$</span>
+                                <s style="opacity: 0.5;">5</s>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

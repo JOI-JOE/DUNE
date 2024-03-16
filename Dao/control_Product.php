@@ -201,3 +201,7 @@ function validate_Sale_Product($sale_product)
     }
     return $sale_product;
 }
+
+function save_array_img()
+{
+}
