@@ -380,12 +380,18 @@ aside .sidebar a:hover span {
 }
 
 /* ---------------- Iconic Product ---------------- */
+.selection_iconic .list-item {
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  gap: 1rem;
+}
 .box {
   width: 300px;
   box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   overflow: hidden;
 }
+
 .slide-img {
   position: relative;
 }

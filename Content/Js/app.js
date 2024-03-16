@@ -1,18 +1,29 @@
-function validation() {
-  const selectors = {
-    name: document.querySelector(".name-cus").value,
-    email: document.querySelector(".email-cus"),
-    password: document.querySelector(".password-cus"),
-    confirm: document.querySelector(".confirm-cus"),
-  };
+// -------- UPLOAD IMAGE --------
+const selectImage = document.querySelector(".select-image");
+const inputFile = document.querySelector("#file");
+const imgArea = document.querySelector(".img-area");
 
-  // const error = {
-  //   name: ,
-  // };
-
-  if (selectors.name == "") {
-    document.getElementById("error_name").innerHTML =
-      "please fill the name field";
-    return false;
+selectImage.addEventListener("click", function () {
+  inputFile.click();
+});
+inputFile.addEventListener("change", function () {
+  const image = this.files[0];
+  if (image.size > 200) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const allImg = imgArea.querySelectorAll("img");
+      allImg.forEach((item) => item.remove());
+      const imgUrl = reader.result;
+      const img = document.createElement("img");
+      img.src = imgUrl;
+      imgArea.appendChild(img);
+      imgArea.classList.add("active");
+      imgArea.dataset.img = image.name;
+    };
+    reader.readAsDataURL(image);
+  } else {
+    alert("Image size more than 2MB");
   }
-}
+});
+
+// VALIDATE FORM NEWS

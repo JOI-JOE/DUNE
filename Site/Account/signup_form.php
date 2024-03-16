@@ -36,13 +36,13 @@
                     <!-- INPUT PASSWORD -->
                     <div class="input-box">
                         <span class="details">Password</span>
-                        <input type="text" name="password" placeholder="Enter your password" class="password-cus" autocomplete="off">
+                        <input type="password" name="password" placeholder="Enter your password" class="password-cus" autocomplete="off">
                     </div>
 
                     <!-- INPUT CONFIRM PASSWORD -->
                     <div class="input-box">
                         <span class="details">Confirm Password</span>
-                        <input type="text" name="confirmPassword" placeholder="Confirm your password" class="confirm-cus" autocomplete="off">
+                        <input type="password" name="confirmPassword" placeholder="Confirm your password" class="confirm-cus" autocomplete="off">
                     </div>
                 </div>
 
