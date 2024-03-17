@@ -79,17 +79,7 @@ function increase_view_product($id_product)
     return pdo_query($sql);
 }
 
-function select_product_special()
-{
-    $sql = "SELECT * FROM `products` WHERE special = 'special'";
-    return pdo_query($sql);
-}
 
-function select_product_by_commodity($id_commodity)
-{
-    $sql = "SELECT * FROM products WHERE id_commodity= $id_commodity LIMIT 0, 20";
-    return pdo_query($sql);
-}
 
 function select_product_keyword($keyword)
 {
@@ -99,11 +89,7 @@ function select_product_keyword($keyword)
     return pdo_query($sql);
 }
 
-function select_product_by_date()
-{
-    $sql = "SELECT * FROM products WHERE date_product BETWEEN '2024-01-01' AND '2025-04-01'";
-    return pdo_query($sql);
-}
+
 // ----------------------------------------------------------------------------------------
 
 function check_Name_Product($name_product)
