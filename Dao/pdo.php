@@ -2,7 +2,7 @@
 
 function pdo_get_connection()
 {
-    $servername = "mysql:host=localhost;dbname=project_haundph45649;charset=utf8";
+    $servername = "mysql:host=localhost;dbname=duan;charset=utf8";
     $username = "root";
     $password = "";
 
