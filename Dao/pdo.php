@@ -78,10 +78,6 @@ function pdo_query_value($sql, $params = [])
 function pdo_check_data($sql, $params = [])
 {
     try {
-        // if ($stmt->rowCount() > 0) {
-        //     return false; 
-        // }
-        // return true; 
         return !pdo_query_value($sql, $params);
     } catch (PDOException $e) {
         throw new Exception("Failed to check data: " . $sql . " - Error: " . $e->getMessage());

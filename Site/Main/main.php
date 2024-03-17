@@ -58,206 +58,115 @@
 
         <!-- ---------------- Iconic Product ---------------- -->
         <div class="selection_iconic">
-            <ul class="list-item">
-                <!-- ------ Product 1 ------ -->
-                <li class="item">
-                    <!-- box-slider -->
-                    <div class="box">
-                        <!-- img -->
-                        <div class="slide-img">
-                            <img src="<?= $CONTENT_URL; ?>/Images/poster/sale11.jpg" alt="running">
-                            <!-- overlay -->
-                            <div class="overlay">
-                                <p href="#" class="buy-btn">
-                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="#"> <i class="fa-regular fa-heart"></i></a>
-                                </p>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="card swiper-slide">
+                        <a href="#">
+                            <div class="box_P">
+                                <!-- img -->
+                                <div class="slide-img">
+                                    <img src="<?= $CONTENT_URL ?>/Images/poster/running.webp" alt="running">
+                                    <!-- overlay -->
+                                    <div class="overlay">
+                                        <p href="#" class="buy-btn">
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- detail-box -->
+                                <div class="detail-box">
+                                    <div class="type">
+                                        <a href="../Product/detail.php?id_product=' . $id_product . '">joradn</a>
+                                        <span>12</span>
+                                    </div>
+                                    <!-- price -->
+                                    <a href="#" class="price">$0</a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- detail-box -->
-                        <div class="detail-box">
-                            <div class="type">
-                                <a href="#" class="pr-name">
-                                    Jordan
-                                </a>
-                                <span class="pr-type">
-                                    sweater
-                                </span>
-                            </div>
-                            <!-- price -->
-                            <a href="#" class="pr-price">
-                                <span style="margin-right: 10px;">120$</span>
-                                <s style="opacity: 0.5;">5</s>
-                            </a>
-                        </div>
+                        </a>
                     </div>
-                </li>
-                <!-- ------ Product 2 ------ -->
-                <li class="item">
-                    <!-- box-slider -->
-                    <div class="box">
-                        <!-- img -->
-                        <div class="slide-img">
-                            <img src="<?= $CONTENT_URL; ?>/Images/poster/sale11.jpg" alt="running">
-                            <!-- overlay -->
-                            <div class="overlay">
-                                <p href="#" class="buy-btn">
-                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="#"> <i class="fa-regular fa-heart"></i></a>
-                                </p>
+
+                    <div class="card swiper-slide">
+                        <a href="#">
+                            <div class="box_P">
+                                <!-- img -->
+                                <div class="slide-img">
+                                    <img src="<?= $CONTENT_URL ?>/Images/poster/running.webp" alt="running">
+                                    <!-- overlay -->
+                                    <div class="overlay">
+                                        <p href="#" class="buy-btn">
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- detail-box -->
+                                <div class="detail-box">
+                                    <div class="type">
+                                        <a href="../Product/detail.php?id_product=' . $id_product . '">joradn</a>
+                                        <span>12</span>
+                                    </div>
+                                    <!-- price -->
+                                    <a href="#" class="price">$0</a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- detail-box -->
-                        <div class="detail-box">
-                            <div class="type">
-                                <a href="#" class="pr-name">
-                                    Jordan
-                                </a>
-                                <span class="pr-type">
-                                    sweater
-                                </span>
-                            </div>
-                            <!-- price -->
-                            <a href="#" class="pr-price">
-                                <span style="margin-right: 10px;">120$</span>
-                                <s style="opacity: 0.5;">5</s>
-                            </a>
-                        </div>
+                        </a>
                     </div>
-                </li>
-                <!-- ------ Product 2 ------ -->
-                <li class="item">
-                    <!-- box-slider -->
-                    <div class="box">
-                        <!-- img -->
-                        <div class="slide-img">
-                            <img src="<?= $CONTENT_URL; ?>/Images/poster/sale11.jpg" alt="running">
-                            <!-- overlay -->
-                            <div class="overlay">
-                                <p href="#" class="buy-btn">
-                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="#"> <i class="fa-regular fa-heart"></i></a>
-                                </p>
+
+                    <div class="card swiper-slide">
+                        <a href="#">
+                            <div class="box_P">
+                                <!-- img -->
+                                <div class="slide-img">
+                                    <img src="<?= $CONTENT_URL; ?>/Images/poster/running.webp" alt="running">
+                                    <!-- overlay -->
+                                    <div class="overlay">
+                                        <p href="#" class="buy-btn">
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- detail-box -->
+                                <div class="detail-box">
+                                    <div class="type">
+                                        <a href="../Product/detail.php?id_product=' . $id_product . '">joradn</a>
+                                        <span>12</span>
+                                    </div>
+                                    <!-- price -->
+                                    <a href="#" class="price">$0</a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- detail-box -->
-                        <div class="detail-box">
-                            <div class="type">
-                                <a href="#" class="pr-name">
-                                    Jordan
-                                </a>
-                                <span class="pr-type">
-                                    sweater
-                                </span>
-                            </div>
-                            <!-- price -->
-                            <a href="#" class="pr-price">
-                                <span style="margin-right: 10px;">120$</span>
-                                <s style="opacity: 0.5;">5</s>
-                            </a>
-                        </div>
+                        </a>
                     </div>
-                </li>
-                <!-- ------ Product 2 ------ -->
-                <li class="item">
-                    <!-- box-slider -->
-                    <div class="box">
-                        <!-- img -->
-                        <div class="slide-img">
-                            <img src="<?= $CONTENT_URL; ?>/Images/poster/sale11.jpg" alt="running">
-                            <!-- overlay -->
-                            <div class="overlay">
-                                <p href="#" class="buy-btn">
-                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="#"> <i class="fa-regular fa-heart"></i></a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- detail-box -->
-                        <div class="detail-box">
-                            <div class="type">
-                                <a href="#" class="pr-name">
-                                    Jordan
-                                </a>
-                                <span class="pr-type">
-                                    sweater
-                                </span>
-                            </div>
-                            <!-- price -->
-                            <a href="#" class="pr-price">
-                                <span style="margin-right: 10px;">120$</span>
-                                <s style="opacity: 0.5;">5</s>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <!-- ------ Product 2 ------ -->
-                <li class="item">
-                    <!-- box-slider -->
-                    <div class="box">
-                        <!-- img -->
-                        <div class="slide-img">
-                            <img src="<?= $CONTENT_URL; ?>/Images/poster/sale11.jpg" alt="running">
-                            <!-- overlay -->
-                            <div class="overlay">
-                                <p href="#" class="buy-btn">
-                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="#"> <i class="fa-regular fa-heart"></i></a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- detail-box -->
-                        <div class="detail-box">
-                            <div class="type">
-                                <a href="#" class="pr-name">
-                                    Jordan
-                                </a>
-                                <span class="pr-type">
-                                    sweater
-                                </span>
-                            </div>
-                            <!-- price -->
-                            <a href="#" class="pr-price">
-                                <span style="margin-right: 10px;">120$</span>
-                                <s style="opacity: 0.5;">5</s>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <!-- ------ Product 2 ------ -->
-                <li class="item">
-                    <!-- box-slider -->
-                    <div class="box">
-                        <!-- img -->
-                        <div class="slide-img">
-                            <img src="<?= $CONTENT_URL; ?>/Images/poster/sale11.jpg" alt="running">
-                            <!-- overlay -->
-                            <div class="overlay">
-                                <p href="#" class="buy-btn">
-                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="#"> <i class="fa-regular fa-heart"></i></a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- detail-box -->
-                        <div class="detail-box">
-                            <div class="type">
-                                <a href="#" class="pr-name">
-                                    Jordan
-                                </a>
-                                <span class="pr-type">
-                                    sweater
-                                </span>
-                            </div>
-                            <!-- price -->
-                            <a href="#" class="pr-price">
-                                <span style="margin-right: 10px;">120$</span>
-                                <s style="opacity: 0.5;">5</s>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        autoplay: true,
+        autoplayDisableOnInteraction: true,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>

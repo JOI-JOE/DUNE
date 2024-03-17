@@ -105,36 +105,7 @@ function select_product_by_date()
     return pdo_query($sql);
 }
 // ----------------------------------------------------------------------------------------
-function pagination_product()
-{
-    $limit = 4;
-    if (!isset($_SESSION['page_no'])) {
-        $_SESSION['page_no'] = 1;
-    }
-    if (empty($_SESSION['page_count']) || isset($_SESSION['page_count'])) {
-        $row_count = pdo_query_value("SELECT count(*) FROM products");
-        $_SESSION['page_count'] = ceil($row_count / $limit);
-    }
 
-    if (exist_param("page_no")) {
-        $_SESSION['page_no'] = $_REQUEST['page_no'];
-    }
-    if ($_SESSION['page_no'] < 0) {
-        $_SESSION['page_no'] = $_SESSION['page_count'] - 1;
-    }
-    if ($_SESSION['page_no'] > $_SESSION['page_count']) {
-        $_SESSION['page_no'] = 0;
-    }
-
-    $start =  ($_SESSION['page_no'] - 1) * $limit;
-    if ($start < 0) {
-        $start = $start * -1;
-    }
-    $sql = "SELECT * FROM `products`
-    JOIN `commodity` ON products.id_commodity = commodity.id_commodity ORDER BY `id_product` LIMIT  $start , $limit";
-
-    return pdo_query($sql);
-}
 function check_Name_Product($name_product)
 {
     $sql = "SELECT * FROM `products` WHERE `name_product` = '$name_product'";
