@@ -26,6 +26,6 @@ if (exist_param('men', $_REQUEST)) {
 } else {
     $VIEW_NAME = "home.php";
 }
-
-$list_Commodity = show_commodity();
+$list_product =  show_product();
+// $list_Commodity = show_commodity();
 require "../layout.php";

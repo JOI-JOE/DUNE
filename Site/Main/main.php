@@ -60,87 +60,37 @@
         <div class="selection_iconic">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="card swiper-slide">
-                        <a href="#">
-                            <div class="box_P">
-                                <!-- img -->
-                                <div class="slide-img">
-                                    <img src="<?= $CONTENT_URL ?>/Images/poster/running.webp" alt="running">
-                                    <!-- overlay -->
-                                    <div class="overlay">
-                                        <p href="#" class="buy-btn">
-                                            <a href="#"></a>
-                                            <a href="#"></a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- detail-box -->
-                                <div class="detail-box">
-                                    <div class="type">
-                                        <a href="../Product/detail.php?id_product=' . $id_product . '">joradn</a>
-                                        <span>12</span>
-                                    </div>
-                                    <!-- price -->
-                                    <a href="#" class="price">$0</a>
-                                </div>
+                    <?php
+                    foreach ($list_product as $tr) {
+                        extract($tr);
+                        echo '<div class="card swiper-slide">
+                <a href="#">
+                    <div class="box_P">
+                        <!-- img -->
+                        <div class="slide-img">
+                            <img src="../../Content/Images/product/' . $img_product . '" alt="" />
+                            <!-- overlay -->
+                            <div class="overlay">
+                                <p href="#" class="buy-btn">
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                </p>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="card swiper-slide">
-                        <a href="#">
-                            <div class="box_P">
-                                <!-- img -->
-                                <div class="slide-img">
-                                    <img src="<?= $CONTENT_URL ?>/Images/poster/running.webp" alt="running">
-                                    <!-- overlay -->
-                                    <div class="overlay">
-                                        <p href="#" class="buy-btn">
-                                            <a href="#"></a>
-                                            <a href="#"></a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- detail-box -->
-                                <div class="detail-box">
-                                    <div class="type">
-                                        <a href="../Product/detail.php?id_product=' . $id_product . '">joradn</a>
-                                        <span>12</span>
-                                    </div>
-                                    <!-- price -->
-                                    <a href="#" class="price">$0</a>
-                                </div>
+                        </div>
+                        <!-- detail-box -->
+                        <div class="detail-box">
+                            <div class="type">
+                            <a href="../Product/detail.php?id_product=' . $id_product . '">' . $name_product . '</a>
+                                <span>' . $sale . '%</span>
                             </div>
-                        </a>
+                            <!-- price -->
+                            <a href="#" class="price">$' . $price . '</a>
+                        </div>
                     </div>
-
-                    <div class="card swiper-slide">
-                        <a href="#">
-                            <div class="box_P">
-                                <!-- img -->
-                                <div class="slide-img">
-                                    <img src="<?= $CONTENT_URL; ?>/Images/poster/running.webp" alt="running">
-                                    <!-- overlay -->
-                                    <div class="overlay">
-                                        <p href="#" class="buy-btn">
-                                            <a href="#"></a>
-                                            <a href="#"></a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- detail-box -->
-                                <div class="detail-box">
-                                    <div class="type">
-                                        <a href="../Product/detail.php?id_product=' . $id_product . '">joradn</a>
-                                        <span>12</span>
-                                    </div>
-                                    <!-- price -->
-                                    <a href="#" class="price">$0</a>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
+                </a>
+            </div>';
+                    }
+                    ?>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -155,7 +105,7 @@
 <!-- Initialize Swiper -->
 <script>
     var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 2,
+        slidesPerView: 4,
         spaceBetween: 30,
         autoplay: true,
         autoplayDisableOnInteraction: true,

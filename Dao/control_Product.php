@@ -1,21 +1,39 @@
 <?php
 require_once "pdo.php";
 
-function show_product($kyw = "", $id_commodity = 0)
+function show_product($kyw = "", $id_brand = 0)
 {
-    $sql = "SELECT * FROM `products`
-            JOIN `commodity` ON products.id_commodity = commodity.id_commodity
-            WHERE 1 ";
-    if ($kyw != "") {
-        $sql .= " AND `products`.`name_product` LIKE '%"  . $kyw . "%'";
-    }
-    if ($id_commodity > 0) {
-        $sql .= " AND `products`.`id_commodity` = '" . $id_commodity . "'";
-    }
+    // $sql = "SELECT * FROM `products`
+    //         JOIN `commodity` ON products.id_commodity = commodity.id_commodity
+    //         WHERE 1 ";
+    // if ($kyw != "") {
+    //     $sql .= " AND `products`.`name_product` LIKE '%"  . $kyw . "%'";
+    // }
+    // if ($id_commodity > 0) {
+    //     $sql .= " AND `products`.`id_commodity` = '" . $id_commodity . "'";
+    // }
 
-    $sql .= " ORDER BY `id_product` ASC";
-    $list_product =  pdo_query($sql);
-    return $list_product;
+    // $sql .= " ORDER BY `id_product` ASC";
+    // $list_product =  pdo_query($sql);
+    // return $list_product;
+    $sql = "SELECT *
+    FROM product p
+    INNER JOIN brand b ON p.id_brand = b.id_brand
+    INNER JOIN sport s ON p.id_sport = s.id_sport
+    INNER JOIN color c ON p.id_color = c.id_color
+    INNER JOIN size sz ON p.id_size = sz.id_size
+    INNER JOIN catergory ct ON p.id_catergory = ct.id_catergory
+    WHERE 1";
+
+    if ($kyw != "") {
+        $sql .= " and name_product like '%" . $kyw . "%'";
+    }
+    if ($id_brand > 0) {
+        $sql .= " and id_brand ='" . $id_brand . "'";
+    }
+    $sql .= "  ORDER BY id_product DESC";
+    $listproduct = pdo_query($sql);
+    return $listproduct;
 }
 function show_product_one($id_product)
 {
@@ -63,7 +81,7 @@ function update_product_one($id_product, $name, $price, $sale, $img_product, $de
 
 function select_all_product()
 {
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM  product";
     return pdo_query($sql);
 }
 
