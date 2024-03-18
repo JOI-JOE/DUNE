@@ -67,7 +67,7 @@
 
             <!-- ---------- Shopping  ----------  -->
             <div class="shopping-bag">
-                <a href=""><i class="bx bx-shopping-bag bag-icon"></i></a>
+                <a href="../Main/index.php?cart"><i class="bx bx-shopping-bag bag-icon"></i></a>
                 <span>0</span>
             </div>
 

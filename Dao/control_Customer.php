@@ -1,29 +1,13 @@
 <?php
 require_once "pdo.php";
 
-function show_client()
+function show_customer()
 {
-    $sql = "SELECT * FROM `clients` order by id_client ASC";
+    $sql = "SELECT * FROM `customer` order by id_customer ASC";
     return pdo_query($sql);
 }
 
-function show_client_one($id_client)
-{
-    $sql = "SELECT * FROM `clients` WHERE `id_client` =" . $id_client;
-    return pdo_query_one($sql);
-}
 
-function show_client_by_email($email)
-{
-    $sql = "SELECT * FROM `clients` WHERE `email` = '$email'";
-    return pdo_query_one($sql);
-}
-
-function show_client_by_id($id_client)
-{
-    $sql = "SELECT * FROM `clients` WHERE `id_client` = '$id_client'";
-    return pdo_query_one($sql);
-}
 
 function insert_client($email, $password, $name, $img, $role, $active)
 {
@@ -68,22 +52,31 @@ function update_client_one($id_client, $email, $password, $name, $img, $role, $a
 
 
 
+
+// ------------------ Function For Login + Sigup + Forget  ------------------ //
+
+function show_customer_by_id($id_customer)
+{
+    $sql = "SELECT * FROM `customer` WHERE `id_customer` =" . $id_customer;
+    return pdo_query_one($sql);
+}
+
+function show_customer_by_email($email)
+{
+    $sql = "SELECT * FROM `customer` WHERE `email_customer` = '$email'";
+    return pdo_query_one($sql);
+}
+
 function email_exist($email)
 {
-    $sql = "SELECT * FROM `clients` WHERE `email` = ?";
+    $sql = "SELECT * FROM `customer` WHERE `email_customer` = ?";
     return pdo_check_data($sql, [$email]);
 }
 
 
-function select_client_by_id($id_client)
-{
-    $sql = "SELECT * FROM client WHERE id_client= " . $id_client;
-    return pdo_query_one($sql);
-}
-
 function change_password_client($email, $new_password)
 {
-    $sql = "  UPDATE `clients` SET `password`='$new_password' WHERE `email`='$email'";
+    $sql = "  UPDATE `customer` SET `email_customer`='$new_password' WHERE `email_customer`='$email'";
     pdo_execute($sql);
 }
 

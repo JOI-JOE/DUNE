@@ -1,11 +1,11 @@
 <?php
 require_once "pdo.php";
 
-function show_commodity()
+function show_brand()
 {
-    $sql = "SELECT * FROM `commodity` ORDER BY `id_commodity` ASC";
-    $list_commodity =  pdo_query($sql);
-    return $list_commodity;
+    $sql = "SELECT * FROM `brand` ORDER BY `id_brand` ASC";
+    $list_brand =  pdo_query($sql);
+    return $list_brand;
 }
 
 function show_commodity_one($id_type)

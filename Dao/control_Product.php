@@ -79,15 +79,23 @@ function update_product_one($id_product, $name, $price, $sale, $img_product, $de
     pdo_execute($sql);
 }
 
+// ------------------ Function For Main ------------------ //
 function select_all_product()
 {
-    $sql = "SELECT * FROM  product";
+    $sql = "SELECT * FROM  `product`";
     return pdo_query($sql);
 }
 
-function select_product_top10()
+function select_product_by_brand($id_brand)
 {
-    $sql = "SELECT * FROM products WHERE view > 3 ORDER BY view DESC LIMIT 0,10";
+    $sql = "SELECT * FROM  `product` Where `id_brand`='$id_brand'";
+    return pdo_query($sql);
+}
+
+function select_product_iconic()
+{
+    // $sql = "SELECT * FROM products WHERE view > 10 ORDER BY view DESC LIMIT 0,10";
+    $sql = "SELECT * FROM product WHERE view >= 20 ORDER BY view DESC LIMIT 0,5";
     return pdo_query($sql);
 }
 

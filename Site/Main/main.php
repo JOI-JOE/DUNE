@@ -61,7 +61,7 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <?php
-                    foreach ($list_product as $tr) {
+                    foreach ($list_iconic as $tr) {
                         extract($tr);
                         echo '<div class="card swiper-slide">
                 <a href="#">

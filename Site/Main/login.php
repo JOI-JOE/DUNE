@@ -1,11 +1,10 @@
 <!--  -->
-<img src="<?= $CONTENT_URL; ?>/Images/client/<?= isset($_SESSION['user']) ? $_SESSION['user']['img_client'] : "user.png" ?>" class="user-pic" onclick="toggleMenu()">
+<img src="<?= $CONTENT_URL; ?>/Images/customer/<?= isset($_SESSION['user']) ? $_SESSION['user']['img_customer'] : "user.png" ?>" class="user-pic" onclick="toggleMenu()">
 <div class="sub-menu-wrap" id="subMenu">
     <div class="sub-menu">
-
         <div class="user-infor">
-            <img src="<?= $CONTENT_URL; ?>/Images/client/<?= isset($_SESSION['user']['img_client']) ? $_SESSION['user']['img_client'] : "user.png" ?>" alt="">
-            <h3><?= isset($_SESSION['user']['name_client']) ? $_SESSION['user']['name_client'] : "" ?> </h3>
+            <img src="<?= $CONTENT_URL; ?>/Images/customer/<?= isset($_SESSION['user']['img_customer']) ? $_SESSION['user']['img_customer'] : "user.png" ?>" alt="">
+            <h3><?= isset($_SESSION['user']['name_customer']) ? $_SESSION['user']['name_customer'] : "" ?> </h3>
         </div>
         <hr>
 
@@ -27,6 +26,11 @@
             echo '<a href="../Main/index.php?changePs" class="sub-menu-link">
             <p>Change Password
             </p>
+            <span>></span>
+            </a>
+
+            <a href="../Main/index.php?edit" class="sub-menu-link">
+            <p>Edit Profile</p>
             <span>></span>
             </a>
            ';

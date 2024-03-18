@@ -1,16 +1,16 @@
 <?php
 require '../../global.php';
-require '../../Dao/control_Client.php';
+require '../../Dao/control_Customer.php';
 extract($_REQUEST);
 
 if (exist_param("changePs")) {
     if ($new_password != $confirm_new_password) {
         $MESSAGE = "Confirm password is incorrect";
     } else {
-        $user = show_client_by_email($email);
+        $user = show_customer_by_email($email);
         extract($user);
         if ($user) {
-            if ($user['password'] == $password) {
+            if ($user['password_customer'] == $password) {
                 try {
                     change_password_client($email, $new_password);
                     $MESSAGE = "Change password successfully";

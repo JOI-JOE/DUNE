@@ -1,12 +1,12 @@
 <?php
 require '../../global.php';
-require '../../Dao/control_Client.php';
+require '../../Dao/control_Customer.php';
 extract($_REQUEST);
 
 if (exist_param("btn_login")) {
-    $user = show_client_by_email($email);
+    $user = show_customer_by_email($email);
     if ($user) {
-        if ($user['password'] == $password) {
+        if ($user['password_customer'] == $password) {
             $MESSAGE = "Login successful";
 
             //  manage the cookie to remember your account

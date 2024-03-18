@@ -1,31 +1,17 @@
     <aside class="main_aside">
         <div class="sidebar">
-
-            <a href="#">
-                <span><img src="../../Content/Images/icon/nike.png" alt=""></span>
-                <h4>Nike</h4>
-            </a>
-            <a href="#">
-                <span><img src="../../Content/Images/icon/adidas.png" alt=""></span>
-                <h4>Adidas</h4>
-            </a>
-            <a href="#">
-                <span><img src="../../Content/Images/icon/puma.png" alt=""></span>
-                <h4>Puma</h4>
-            </a>
-            <a href="#">
-                <span><img src="../../Content/Images/icon/champion.png" alt=""></span>
-                <h4>Champion</h4>
-            </a>
-            <a href="#">
-                <span><img src="../../Content/Images/icon/new.png" alt=""></span>
-                <h4>NewBalance</h4>
-            </a>
-            <a href="#">
-                <span><img src="../../Content/Images/icon/underarmour.png" alt=""></span>
-                <h4>UnderArmour</h4>
-            </a>
-
+            <?php
+            foreach ($list_brand as $brand) {
+                extract($brand);
+                $link = "../Product/list.php?id_brand=$id_brand";
+                echo '
+                <a href="' . $link . '">
+                <span><img src="../../Content/Images/icon/' . $name_brand . '.png" alt=""></span>
+                <h4>' . $name_brand . '</h4>
+                </a>
+                ';
+            }
+            ?>
 
         </div>
     </aside>
