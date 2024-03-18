@@ -74,23 +74,23 @@ function email_exist($email)
 }
 
 
-function change_password_client($email, $new_password)
+function change_password_customer($email, $new_password)
 {
-    $sql = "  UPDATE `customer` SET `email_customer`='$new_password' WHERE `email_customer`='$email'";
+    $sql = "  UPDATE `customer` SET `password_customer`='$new_password' WHERE `email_customer`='$email'";
     pdo_execute($sql);
 }
 
 
 // ======================================== FUNCTION CHECK SIGN UP ======================================== // 
 
-function validateNameLength($name_client)
+function validateNameLength($name_customer)
 {
     $minLen = 2;
     $maxLen = 50;
 
-    $nameLength = strlen($name_client);
+    $nameLength = strlen($name_customer);
 
-    if (empty($name_client)) {
+    if (empty($name_customer)) {
         return "Name address is required.";
     }
 
@@ -118,6 +118,36 @@ function validateEmail($email)
     }
     if (!email_exist($email)) {
         return "Email exists";
+    }
+    return true;
+}
+
+function validateAdress($address_customer)
+{
+    if (empty($address_customer)) {
+        return "Address is required.";
+    }
+    return true;
+}
+
+
+function validatePhone($phone)
+{
+
+    $pattern = '/^\d{10}$/';
+    if (empty($phone)) {
+        return "Phone is required.";
+    }
+
+    if (preg_match($pattern, $phone)) {
+        // Kiểm tra thêm điều kiện khác
+        if ($phone[0] == '0') {
+            return 'Phone is invalid';
+        } else {
+            return 'Invalid phone number (must start with 0)';
+        }
+    } else {
+        return 'Invalid phone number (incorrect format)';
     }
     return true;
 }

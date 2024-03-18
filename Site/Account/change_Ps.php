@@ -10,9 +10,9 @@ if (exist_param("changePs")) {
         $user = show_customer_by_email($email);
         extract($user);
         if ($user) {
-            if ($user['password_customer'] == $password) {
+            if ($user['password_customer'] == $old_password) {
                 try {
-                    change_password_client($email, $new_password);
+                    change_password_customer($email, $new_password);
                     $MESSAGE = "Change password successfully";
                 } catch (Exception $exc) {
                     $MESSAGE = "Change password failed";
