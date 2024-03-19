@@ -47,6 +47,7 @@
 
     .info {
         display: flex;
+        gap: 3rem;
         align-items: center;
         justify-content: space-between;
     }
@@ -66,7 +67,7 @@
         font-size: 1.2em;
     }
 
-    .quantity {
+    .quantity-container {
         display: flex;
         align-items: center;
         margin-left: 50px
@@ -115,7 +116,8 @@
         align-items: center;
     }
 
-    .checkout {
+    .checkout,
+    .checkout-main {
         background-color: #000;
         color: #fff;
         padding: 12px 24px;
@@ -128,33 +130,65 @@
     .checkout:hover {
         background-color: #333;
     }
+
+    .button-check {
+        background-color: var(--color-dark);
+        padding: 20px;
+        border-radius: var(--border-radius-1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 4rem;
+        ;
+    }
+
+    .checkout-main {
+        background: #1976d2;
+    }
 </style>
 <section class="cart container">
     <main>
         <section class="cart ">
             <h2>Your Shopping Cart</h2>
             <ul>
-                <li>
-                    <div class="product-details">
-                        <img src="product1.jpg" alt="Product 1">
-                        <div class="info">
-                            <h3>Product 1</h3>
-                            <p class="price">$100</p>
-                            <div class="quantity">
-                                <button class="quantitybutton" onclick="decrementQuantity(this)">-</button>
-                                <span class="quantity-value">1</span>
-                                <button class="quantitybutton" onclick="incrementQuantity(this)">+</button>
+                <?php
+                for ($i = 0; $i < 2; $i++) {
+                ?>
+                    <li>
+                        <input type="checkbox" name="ChooseAll[]">
+                        <div class="product-details">
+                            <img src="product1.jpg" style="margin-right:100px">
+                            <div class="info">
+                                <h3>Product 1</h3>
+                                <p class="price">$200</p>
+                                <div class="quantity-container">
+                                    <button class="quantitybutton" onclick="decrementQuantity(this)">-</button>
+                                    <span class="quantity-value" id="quantityValue">1</span>
+                                    <button class="quantitybutton" onclick="incrementQuantity(this)">+</button>
+                                </div>
+
+
                             </div>
                         </div>
-                    </div>
-                    <button class="remove">Remove</button>
-                </li>
-                <!-- Additional items would go here -->
+                        <button class="remove">Remove</button>
+                    </li>
+                    <!-- Additional items would go here -->
+
+                <?php
+                }
+                ?>
             </ul>
-            <div class="total">
-                <p>Total: $100</p>
-                <button class="checkout">Checkout</button>
+            <div class="button-check">
+                <div class="bt-1">
+                    <button class="checkout" id="select-all">Select All</button>
+                    <button class="checkout" id="not-select">Deselect All</button>
+                </div>
+                <!-- LINK TO THE ORDER ITEM  -->
+                <div class="bt-2">
+                    <a href="../Main/index.php?checkout"><button class="checkout-main">Checkout</button></a>
+                </div>
             </div>
+
         </section>
     </main>
 </section>
@@ -164,6 +198,8 @@
         var quantityElement = button.parentElement.querySelector('.quantity-value');
         var currentQuantity = parseInt(quantityElement.textContent);
         quantityElement.textContent = currentQuantity + 1;
+
+        document.getElementById('quantityValue').value = currentQuantity + 1;
     }
 
     function decrementQuantity(button) {
@@ -171,6 +207,36 @@
         var currentQuantity = parseInt(quantityElement.textContent);
         if (currentQuantity > 1) {
             quantityElement.textContent = currentQuantity - 1;
+
+            document.getElementById('quantityValue').value = currentQuantity - 1;
         }
     }
+
+    // Tìm tất cả các container
+    var quantityContainers = document.querySelectorAll('.quantity-container');
+    // Lặp qua từng container và thêm event listener
+    for (var i = 0; i < quantityContainers.length; i++) {
+        var container = quantityContainers[i];
+        var decrementButton = container.querySelector('.quantitybutton:first-child');
+        var incrementButton = container.querySelector('.quantitybutton:last-child');
+    }
+
+
+    const selectAllButton = document.querySelector("#select-all");
+    const not_select = document.querySelector("#not-select");
+    const checkboxes = document.querySelectorAll("input[name='ChooseAll[]']");
+
+    function toggleCheckboxes(checkedState) {
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = checkedState;
+        });
+    }
+
+    selectAllButton.addEventListener("click", () => {
+        toggleCheckboxes(!selectAllButton.checked);
+    });
+
+    not_select.addEventListener("click", () => {
+        toggleCheckboxes(selectAllButton.checked);
+    });
 </script>

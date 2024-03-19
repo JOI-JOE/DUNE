@@ -1,12 +1,16 @@
 <?php
 require '../../global.php';
 require '../../Dao/control_Product.php';
-require '../../Dao/control_Comment.php';
+require '../../Dao/control_Size.php';
+require '../../Dao/control_Color.php';
 
 extract($_REQUEST);
 
 $products = show_product_one($id_product);
 extract($products);
+
+$color = loadall_color();
+$size = loadall_size();
 
 // increase view 
 increase_view_product($id_product);

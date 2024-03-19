@@ -36,15 +36,17 @@
         <!-- ---------------- Sport Product ---------------- -->
         <div class="selection_sport">
             <ul class="sport">
-                <li><a href=""><img src="<?= $CONTENT_URL; ?>/Images/poster/football.webp" alt="football"></a>
-                    <span class="sub_title">Football</span>
-                </li>
-                <li><a href=""><img src="<?= $CONTENT_URL; ?>/Images/poster/running.webp" alt="running"></a>
-                    <span class="sub_title">Running</span>
-                </li>
-                <li><a href=""><img src="<?= $CONTENT_URL; ?>/Images/poster/basketball.webp" alt="basketball"></a>
-                    <span class="sub_title">Basketball</span>
-                </li>
+                <?php
+                foreach ($list_sport as $sport) {
+                    extract($sport);
+                    $link = "../Product/list.php?id_sport=$id_sport";
+                    echo '
+                        <li><a href="' . $link . '"><img src="../../Content/Images/poster/' . $name_sport . '.webp" alt=""></a>
+                        <span class="sub_title">' . $name_sport . '</span>
+                        </li>
+                        ';
+                }
+                ?>
             </ul>
         </div>
     </div>
@@ -64,7 +66,7 @@
                     foreach ($list_iconic as $tr) {
                         extract($tr);
                         echo '<div class="card swiper-slide">
-                <a href="#">
+                <a href="../Product/detail.php?id_product=' . $id_product . '">
                     <div class="box_P">
                         <!-- img -->
                         <div class="slide-img">

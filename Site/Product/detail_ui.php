@@ -1,145 +1,250 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+    }
+
+    .Box {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 20px;
+    }
+
+    .product-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-description {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-description h2 {
+        margin-top: 0;
+    }
+
+    .product-description p {
+        margin-bottom: 10px;
+        line-height: 1.5;
+        color: hsl(206, 16%, 10%);
+        font-family: var(--body-font);
+    }
+
+    .select-container {
+        margin-bottom: 20px;
+        display: inline-block;
+        margin-right: 20px;
+        /* Adjust the margin as needed */
+    }
+
+    .select-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .select-container select {
+        margin-right: 2rem;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .review-box {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-box h3 {
+        margin-top: 0;
+    }
+
+    .review-textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .star-rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating label {
+        font-size: 24px;
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .star-rating input:checked~label {
+        color: #ffc107;
+    }
+
+    .submit-button {
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: #333;
+    }
+
+    .button-27 {
+        background-color: #000000;
+        border: 2px solid #1A1A1A;
+        border-radius: 15px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: normal;
+        margin: 0;
+        outline: none;
+        padding: 20px 40px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        will-change: transform;
+    }
+
+    .button-27:disabled {
+        pointer-events: none;
+    }
+
+    .button-27:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+
+    .button-27:active {
+        box-shadow: none;
+        transform: translateY(0);
+    }
+</style>
+
 <div class="detail title-product container">
 
-    <div class="title-game">
-        <ul style="display:inline-flex,">
-            <li><a href="../Main/index.php">All Game >> </a></li>
-            <li><a href=""><?= $name_commodity ?> >> </a></li>
-            <li><a href=""><?= $name_product ?> >> </a></li>
-            <li><a href=""></a></li>
-        </ul>
-        <h1 id="subtitle"><?= $name_product ?></h1>
-    </div>
-
-    <div class="detai-game">
-        <div class="detail-poster">
-            <img src="<?= $CONTENT_URL ?>/Images/product/<?= $img_product ?>" alt="">
+    <div class="Box">
+        <!-- Grid 1: Product Image -->
+        <div>
+            <img src="../../Content/Images/product/<?= $img_product ?>" alt="" class="product-image">
         </div>
-        <div class="content-game">
-            <!-- ====================== CONTENT 1 ====================== -->
-            <h2 id="description"><?= $description ?></h2>
-            <!-- review -->
-            <span>RECENT REVIEWS:
-                <?php
-                $numberOfViews = (int) $view;
 
-                if ($numberOfViews > 30) {
-                    $rateClass = 'rate-green';
-                } elseif ($numberOfViews > 10) {
-                    $rateClass = 'rate-yellow';
-                } else {
-                    $rateClass = 'rate';
-                }
-                ?>
-                <span id="<?= $rateClass ?>">very positive:</span>
-            </span>(<?= $view ?>)<br>
+        <!-- Grid2: Description and Review Box -->
+        <div>
+            <div class="product-description">
+                <h2 style="color:#000000"><?= $name_product ?></h2>
+                <b>
+                    <h3 style="margin:1rem 0;color:hsl(199, 28%, 17%)">$<?= $price ?></h3>
+                </b>
+                <p>
+                    You already know they're crisp and clean. Their upper is made from leather and textiles, and they have that iconic Nike Air comfort in the sole. They're gonna go with any outfit—so what's it gonna be?
+                    <br>
+                    Colour Shown: White/Lobster/Sail/Dune Red <br>
+                    Style: FJ3459-160
+                </p>
 
-            <!-- rating -->
-            <span>ALL RATINGS:
-                <span id="<?= $rateClass ?>">very positive:</span>
-            </span>(1,132)<br>
+                <div class="select-container">
+                    <label for="size">Size:</label>
+                    <select id="size">
+                        <?php
 
-            <!-- date -->
-            <span>RELEASE DATE: <?= $date_product ?></span><br>
+                        foreach ($size as $sz) {
+                            extract($sz);
+                            $selected = $sz['id_size'] == $id_size ? 'selected' : '';
+                            echo '
+                            <option value="' . $sz['id_size'] . '" ' . $selected . '>' . $sz['name_size'] . '</option>
 
-            <!-- nomination -->
-            <span>NOMINATIONS :
-                <span id="special">
-                    <?php echo $nominate = ($special == "special") ? "Game of the year" : "13 nominated";  ?>
-                </span>
-            </span><br>
-
-            <!-- nomination -->
-            <span>Popular user tags for this product:
-                <span id="type">
-                    <?= $name_commodity ?>
-                </span>
-            </span>
-            <!-- ====================== END CONTENT 1 ====================== -->
-
-
-            <!-- ====================== CONTENT 2 ====================== -->
-            <div class="support-gamer ">
-                <ul>
-                    <li><i class='bx bxs-user'></i><span> Solo</span></li>
-                    <li><i class='bx bxs-group'></i><span> Online PvP</span></li>
-                    <li><i class='bx bxs-memory-card'></i><span> Steam Tradings Cards</span></li>
-                    <li><i class='bx bxs-cloud'></i><span> SteamCloud</span></li>
-                </ul>
-            </div>
+                            ';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="select-container">
+                    <label for="color">Color:</label>
+                    <select id="color">
+                        <?php
+                        foreach ($color as $cl) {
+                            extract($cl);
+                            $selected = $cl['id_color'] == $products['id_color'] ? 'selected' : '';
+                            echo '
+                            <option value="' . $cl['id_color'] . '" ' . $selected . '>' . $cl['name_color'] . '</option>
 
 
-            <!-- ====================== END CONTENT 2 ====================== -->
+                            ';
+                        }
+                        ?>
 
-
-            <!-- ====================== PRICE ====================== -->
-            <div class="title-game price-box">
-                <h2 style="color: black;"><span>Buy: </span><?= $name_product ?></h2>
-                <div class="price-game">
-                    <span id="price-product"><?= number_format($price_product, 2) ?>$</span>
-                    <div class="sub-price">
-                        <button id="add-to-card">ADD TO CARD</button>
-                    </div>
+                    </select>
+                </div>
+                <div class="select-container">
+                    <button class="button-27" role="button">Add To Cart</button>
                 </div>
             </div>
-            <!-- ====================== END PRICE ====================== -->
 
-        </div>
-    </div>
 
-    <div class="colum-2">
+            <div class="review-box">
+                <h3>Customer Reviews</h3>
+                <div class="review">
+                    <h4>Leave Your Review</h4>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5">&#9733;</label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4">&#9733;</label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3">&#9733;</label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2">&#9733;</label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1">&#9733;</label>
+                    </div>
+                    <textarea id="reviewText" rows="1" cols="50" class="review-textarea" placeholder="Write your review here" disabled><?= $description ?></textarea>
 
-        <!-- ====================== PRoDUCT SAME COMMODITY ====================== -->
-        <div class="title-game price-box">
-            <div class="same-product">
-                <h2> MORE OF THE SAME</h2>
-                <ul class="list-same">
                     <?php
-                    foreach ($product_same_commodity as $same) {
-                        extract($same);
-                        $link = "../Product/detail.php?id_product=$id_product";
-
-                        echo '<li><a href=' . $link . '>' . $name_product . '</a></li>';
+                    if (isset($_SESSION['user'])) {
+                    ?>
+                        <form action="detail.php?id_product=<?= $id_product ?>" id="form-send" method="post">
+                            <textarea id="reviewText" rows="4" cols="50" class="review-textarea" placeholder="Write your review here"></textarea>
+                            <button class="submit-button">Submit Review</button>
+                            <input type="hidden" name="id_product" value="<?= $_GET['id_product'] ?>">
+                        </form>
+                    <?php
                     }
                     ?>
-                </ul>
+
+
+                </div>
             </div>
         </div>
-        <!-- ====================== END PRoDUCT SAME COMMODITY ====================== -->
-
-        <!-- ====================== COMMENT ====================== -->
-        <div class="title-game comment">
-            <h2 style="margin-bottom: 2rem;">Comment</h2>
-            <?php
-            foreach ($comment_list as $list) {
-                extract($list);
-                echo ' <div class="user-commneted">
-                <div class="content">
-                    <p  style="color:black">' . $content_comment . '</p>
-                </div>
-                <div class="date">
-                    <span>' . $name_client . ':</span>
-                    <span>' . $date_comment . '</span>
-                </div>
-                </div>';
-            }
-            ?>
-
-            <?php
-            if (isset($_SESSION['user'])) {
-            ?>
-                <form action="detail.php?id_product=<?= $id_product ?>" id="form-send" method="post">
-                    <textarea rows="1" name="content" placeholder="Your opinion..."></textarea>
-                    <button id="btn-send" name="btn_content" type="submit">Send</button>
-                    <input type="hidden" name="id_product" value="<?= $_GET['id_product'] ?>">
-                </form>
-            <?php
-            }
-            ?>
-
-
-        </div>
-        <!-- ====================== END COMMENT ====================== -->
-
 
 
     </div>

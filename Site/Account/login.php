@@ -18,9 +18,9 @@ if (exist_param("btn_login")) {
                 delete_cookie("password");
             }
             $_SESSION['user'] = $user;
-            if (isset($_SESSION['request_uri'])) {
-                header('Location:' . $_SESSION['request_uri']);
-            }
+            // if (isset($_SESSION['request_uri'])) {
+            // }
+            header('Location: http://localhost/BOX_PHP/DUNE/Site/Main/index.php');
         } else {
             $MESSAGE = "Login failed";
         }

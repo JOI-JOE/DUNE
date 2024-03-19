@@ -1,21 +1,8 @@
 <?php
 require_once "pdo.php";
 
-function show_product($kyw = "", $id_brand = 0)
+function show_product($kyw = "", $id_brand = 0, $id_color = 0, $id_size = 0, $id_catergory = 0)
 {
-    // $sql = "SELECT * FROM `products`
-    //         JOIN `commodity` ON products.id_commodity = commodity.id_commodity
-    //         WHERE 1 ";
-    // if ($kyw != "") {
-    //     $sql .= " AND `products`.`name_product` LIKE '%"  . $kyw . "%'";
-    // }
-    // if ($id_commodity > 0) {
-    //     $sql .= " AND `products`.`id_commodity` = '" . $id_commodity . "'";
-    // }
-
-    // $sql .= " ORDER BY `id_product` ASC";
-    // $list_product =  pdo_query($sql);
-    // return $list_product;
     $sql = "SELECT *
     FROM product p
     INNER JOIN brand b ON p.id_brand = b.id_brand
@@ -31,14 +18,22 @@ function show_product($kyw = "", $id_brand = 0)
     if ($id_brand > 0) {
         $sql .= " and id_brand ='" . $id_brand . "'";
     }
+    if ($id_color > 0) {
+        $sql .= " and id_color ='" . $id_color . "'";
+    }
+    if ($id_size > 0) {
+        $sql .= " and id_size ='" . $id_size . "'";
+    }
+    if ($id_catergory > 0) {
+        $sql .= " and id_catergory ='" . $id_catergory . "'";
+    }
     $sql .= "  ORDER BY id_product DESC";
     $listproduct = pdo_query($sql);
     return $listproduct;
 }
 function show_product_one($id_product)
 {
-    $sql = "SELECT * FROM `products`
-    JOIN `commodity` ON products.id_commodity = commodity.id_commodity WHERE `id_product` =  '$id_product'";
+    $sql = "SELECT * FROM `product` WHERE `id_product` =  '$id_product'";
     return pdo_query_one($sql);
 }
 function insert_product($name, $type, $genre, $date, $price, $sale, $option, $img)
@@ -101,17 +96,13 @@ function select_product_iconic()
 
 function increase_view_product($id_product)
 {
-    $sql = "UPDATE products SET view = view + 1 WHERE id_product =" . $id_product;
+    $sql = "UPDATE product SET view = view + 1 WHERE id_product =" . $id_product;
     return pdo_query($sql);
 }
 
-
-
-function select_product_keyword($keyword)
+function select_product_by_sport($id_sport)
 {
-    $sql = "SELECT * FROM products P "
-        . "JOIN commodity C ON C.id_commodity = P.id_commodity"
-        . " WHERE name_product LIKE '%' . $keyword . '%' OR id_commodity LIKE  '%' . $keyword . '%'";
+    $sql = "SELECT * FROM  `product` Where `id_sport`='$id_sport'";
     return pdo_query($sql);
 }
 

@@ -1,3 +1,8 @@
+<?php
+require "../../Dao/control_Cart.php";
+$user_email = isset($_SESSION['user']) ? $_SESSION['user']['email_customer'] : "";
+$number = count_cart($user_email);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +73,15 @@
             <!-- ---------- Shopping  ----------  -->
             <div class="shopping-bag">
                 <a href="../Main/index.php?cart"><i class="bx bx-shopping-bag bag-icon"></i></a>
-                <span>0</span>
+                <?php
+                if (is_array($number)) {
+                    foreach ($number as $nu) {
+                        echo '<span>' . $nu['number_cart'] . '</span>';
+                    }
+                } else {
+                    echo '<span>0</span>';
+                }
+                ?>
             </div>
 
             <?php
@@ -80,9 +93,9 @@
     <!-- =================================== END HEADER ======================================== -->
 
     <!-- =================================== MAIN ======================================== -->
-    <main class="main">
-        <?php include $VIEW_NAME ?>
-    </main>
+
+    <?php include $VIEW_NAME ?>
+
     <!-- =================================== END MAIN ======================================== -->
 
     <!-- -------------------------------------------------- -->

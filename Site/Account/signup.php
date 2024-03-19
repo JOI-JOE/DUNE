@@ -43,5 +43,6 @@ if (exist_param('register')) {
 } else {
     global $email_customer, $password, $confirmPassword, $name_customer, $img, $address_customer, $phone_customer, $role, $active;
 }
+
 $VIEW_NAME = "Account/signup_form.php";
 require '../layout.php';
