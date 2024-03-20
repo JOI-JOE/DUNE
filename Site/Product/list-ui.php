@@ -39,11 +39,11 @@
                         <!-- detail-box -->
                         <div class="detail-box">
                             <div class="type">
-                                <a href="detail.php?id_product=' . $id_product . '">' . $name_product . '</a>
+                                <a href="../Main/index.php?id_product=' . $id_product . '">' . $name_product . '</a>
                                 <span>' . $sale . '%</span>
                             </div>
                             <!-- price -->
-                            <a href="detail.php?id_product=' . $id_product . '" class="price">$' . number_format($price, 2)  . '</a>
+                            <a href="../Main/index.php?id_product=' . $id_product . '" class="price">$' . number_format($price, 2)  . '</a>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,7 @@
 <?php
+require_once "pdo.php";
+
+
 function insert_color($name_color)
 {
     $sql = "INSERT INTO color(name_color) VALUES('$name_color')";

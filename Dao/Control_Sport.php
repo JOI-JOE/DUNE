@@ -1,4 +1,6 @@
 <?php
+require_once "pdo.php";
+
 function insert_sport($name_sport)
 {
     $sql = "INSERT INTO sport(name_sport) VALUES('$name_sport')";

@@ -1,8 +1,3 @@
-<?php
-require "../../Dao/control_Cart.php";
-$user_email = isset($_SESSION['user']) ? $_SESSION['user']['email_customer'] : "";
-$number = count_cart($user_email);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,18 +56,18 @@ $number = count_cart($user_email);
             </div>
 
 
-            <form method="post" action="../Product/list.php">
+            <form method="GET" action="../Main/index.php">
                 <div class="form-input">
-                    <input type="search" name="kyw" placeholder="Search..." />
+                    <input type="search" name="search" placeholder="Search..." />
                     <button class="search-btn" type="submit">
                         <i class="bx bx-search"></i>
                     </button>
                 </div>
             </form>
 
-            <!-- ---------- Shopping  ----------  -->
+
             <div class="shopping-bag">
-                <a href="../Main/index.php?cart"><i class="bx bx-shopping-bag bag-icon"></i></a>
+                <a href="../Main/index.php?cart"><i class=" bx bx-shopping-bag bag-icon"></i></a>
                 <?php
                 if (is_array($number)) {
                     foreach ($number as $nu) {

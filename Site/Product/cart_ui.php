@@ -40,14 +40,14 @@
     }
 
     .product-details img {
-        width: 100px;
-        margin-right: 20px;
+        width: 50px;
+        /* margin-right: 20px; */
         border-radius: 5px;
     }
 
     .info {
         display: flex;
-        gap: 3rem;
+        /* gap: 3rem; */
         align-items: center;
         justify-content: space-between;
     }
@@ -56,6 +56,7 @@
         margin: 0;
         font-size: 1.2em;
         margin-right: 50px;
+        width: 400px;
     }
 
     .info p {
@@ -151,20 +152,23 @@
         <section class="cart ">
             <h2>Your Shopping Cart</h2>
             <ul>
-                <?php
-                for ($i = 0; $i < 2; $i++) {
-                ?>
+                <form action="cart.php" method="POST" autocomplete="off">
+                    <?php
+                    foreach ($list_cart as $ls) {
+                        extract($ls);
+                        echo
+                        '
                     <li>
                         <input type="checkbox" name="ChooseAll[]">
                         <div class="product-details">
-                            <img src="product1.jpg" style="margin-right:100px">
+                            <img src="../../Content/Images/product/' . $img_product . '" alt="" style="margin-right:100px">
                             <div class="info">
-                                <h3>Product 1</h3>
-                                <p class="price">$200</p>
+                                <h3>' . $name_product . '</h3>
+                                <p class="price">$' . $price . '</p>
                                 <div class="quantity-container">
-                                    <button class="quantitybutton" onclick="decrementQuantity(this)">-</button>
+                                    <button class="quantitybutton" onclick="decrementQuantity(this)" autocomplete="off" >-</button>
                                     <span class="quantity-value" id="quantityValue">1</span>
-                                    <button class="quantitybutton" onclick="incrementQuantity(this)">+</button>
+                                    <button class="quantitybutton" onclick="incrementQuantity(this)" autocomplete="off">+</button>
                                 </div>
 
 
@@ -172,11 +176,11 @@
                         </div>
                         <button class="remove">Remove</button>
                     </li>
-                    <!-- Additional items would go here -->
+                    ';
+                    }
+                    ?>
 
-                <?php
-                }
-                ?>
+
             </ul>
             <div class="button-check">
                 <div class="bt-1">
@@ -185,10 +189,10 @@
                 </div>
                 <!-- LINK TO THE ORDER ITEM  -->
                 <div class="bt-2">
-                    <a href="../Main/index.php?checkout"><button class="checkout-main">Checkout</button></a>
+                    <button class="checkout-main" name="btn-checkout">Checkout</button>
                 </div>
             </div>
-
+            </form>
         </section>
     </main>
 </section>

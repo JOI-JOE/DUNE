@@ -181,7 +181,7 @@
                             extract($sz);
                             $selected = $sz['id_size'] == $id_size ? 'selected' : '';
                             echo '
-                            <option value="' . $sz['id_size'] . '" ' . $selected . '>' . $sz['name_size'] . '</option>
+                            <option value="' . $sz['id_size'] . '" ' . $selected . ' >' . $sz['name_size'] . '</option>
 
                             ';
                         }
@@ -196,7 +196,7 @@
                             extract($cl);
                             $selected = $cl['id_color'] == $products['id_color'] ? 'selected' : '';
                             echo '
-                            <option value="' . $cl['id_color'] . '" ' . $selected . '>' . $cl['name_color'] . '</option>
+                            <option value="' . $cl['id_color'] . '" ' . $selected . ' >' . $cl['name_color'] . '</option>
 
 
                             ';
@@ -206,7 +206,9 @@
                     </select>
                 </div>
                 <div class="select-container">
-                    <button class="button-27" role="button">Add To Cart</button>
+                    <form action="../Product/cart.php?id_product" method="POST">
+                        <input type="submit" class="button-27" name="add-cart" value="Add To Card">
+                    </form>
                 </div>
             </div>
 
