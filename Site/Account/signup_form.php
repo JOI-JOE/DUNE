@@ -3,7 +3,7 @@
     <div class="form signup_form">
         <div class="title">Registration</div>
 
-        <form action="../Account/signup.php" method="post" enctype="multipart/form-data" onsubmit="return validation()">
+        <form action="../Main/index.php?signup" method="post" enctype="multipart/form-data" onsubmit="return validation()">
 
             <!-- input alert -->
 

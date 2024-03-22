@@ -50,6 +50,6 @@ function count_cart($email)
 
 function check_Cart($id_product)
 {
-    $sql = "SELECT COUNT(*) FROM `cart` WHERE `id_product` = '$id_product'";
-    return pdo_check_data($sql);
+    $sql = "SELECT * FROM  `cart` WHERE `id_product` = '$id_product'";
+    return pdo_check_data($sql) > 0;
 }

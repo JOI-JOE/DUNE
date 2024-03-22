@@ -1,6 +1,5 @@
 <div class="box container">
 
-
     <ul>
         <?php
         foreach ($list_cart as $ls) {
@@ -19,9 +18,7 @@
                                 <ul>
                                     <li>
                                         <span>Quantity: </span>
-                                        <button class="increase-button button">+</button>
-                                        <input type="number" class="number-input" value="1" disabled>
-                                        <button class="decrease-button button">-</button>
+                                        <input type="number" class="number-input" min="1" value="1">
                                     </li>
                                     <li>
                                         <span>Size: </span>
@@ -70,40 +67,33 @@
 </div>
 
 <script>
-    const increaseButtons = document.querySelectorAll('.increase-button');
-    const decreaseButtons = document.querySelectorAll('.decrease-button');
-    const numberInputs = document.querySelectorAll('.number-input');
+    function calculateTotal() {
+        const productPrices = document.querySelectorAll(".product-price span");
+        const numberInputs = document.querySelectorAll('.number-input');
 
-    // Initial value
-    let numbers = Array(numberInputs.length).fill(1);
+        let total = 0;
 
-    // Update display based on current number
-    for (let i = 0; i < numberInputs.length; i++) {
-        numberInputs[i].value = numbers[i];
+        for (let i = 0; i < productPrices.length; i++) {
+
+            const price = productPrices[i].textContent.slice(1);
+            const priceWithoutDollarSign = parseFloat(price.replace("$", ""));
+            const quantity = parseInt(numberInputs[i].value);
+
+            const productTotal = priceWithoutDollarSign * quantity;
+
+            total += productTotal;
+        }
+
+        document.getElementById("totalPrice").innerHTML = `Total: ${total.toFixed(2)}`;
     }
 
-    // Function to increment the number
-    function increaseNumber(event) {
-        const index = event.target.dataset.index;
-        numbers[index]++;
-        numberInputs[index].value = numbers[index];
-    }
+    calculateTotal();
 
-    // Function to decrement the number (with optional minimum value handling)
-    function decreaseNumber(event) {
-        const index = event.target.dataset.index;
-        numbers[index] = Math.max(numbers[index] - 1, 1);
-        numberInputs[index].value = numbers[index];
-    }
+    const quantityInputs = document.querySelectorAll(".number-input");
 
-    // Add click event listeners to buttons
-    for (let i = 0; i < increaseButtons.length; i++) {
-        increaseButtons[i].addEventListener('click', increaseNumber);
-        increaseButtons[i].dataset.index = i;
-    }
-
-    for (let i = 0; i < decreaseButtons.length; i++) {
-        decreaseButtons[i].addEventListener('click', decreaseNumber);
-        decreaseButtons[i].dataset.index = i;
-    }
+    quantityInputs.forEach(input => {
+        input.addEventListener("change", () => {
+            calculateTotal();
+        });
+    });
 </script>

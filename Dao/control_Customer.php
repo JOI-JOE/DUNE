@@ -66,14 +66,14 @@ function show_customer_by_email($email)
 
 function email_exist($email)
 {
-    $sql = "SELECT * FROM `customer` WHERE `email_customer` = ?";
-    return pdo_check_data($sql, [$email]);
+    $sql = "SELECT * FROM `customer` WHERE `email_customer` = '$email'";
+    return pdo_query_value($sql) > 0;
 }
 
 
 function change_password_customer($email, $new_password)
 {
-    $sql = "  UPDATE `customer` SET `password_customer`='$new_password' WHERE `email_customer`='$email'";
+    $sql = "UPDATE `customer` SET `password_customer`='$new_password' WHERE `email_customer`='$email'";
     pdo_execute($sql);
 }
 
@@ -113,7 +113,7 @@ function validateEmail($email)
     if (strlen($email) > 255) {
         return "Email address is too long.";
     }
-    if (!email_exist($email)) {
+    if (email_exist($email)) {
         return "Email exists";
     }
     return true;

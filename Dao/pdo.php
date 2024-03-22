@@ -61,14 +61,12 @@ function pdo_query_one($sql, $params = [])
 function pdo_query_value($sql, $params = [])
 {
     try {
-        $conn = pdo_get_connection(); // Assuming pdo_get_connection() establishes a connection
+        $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($params);
 
-        // Use fetchColumn() to directly retrieve the first column value
-        $value = $stmt->fetchColumn();
-        return $value !== false ? $value : null; // Return value if successful, null otherwise
-
+        $row = $stmt->fetch(PDO::FETCH_NUM); // Fetch numerically indexed row
+        return $row ? $row[0] : null;
     } catch (PDOException $e) {
         throw new Exception("Failed to query value: " . $sql . " - Error: " . $e->getMessage());
     } finally {
@@ -76,20 +74,13 @@ function pdo_query_value($sql, $params = [])
     }
 }
 
+
 function pdo_check_data($sql, $params = [])
 {
-    // Use prepared statement to prevent SQL injection
-
     try {
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($params);
-
-        $exists = $stmt->fetchColumn() > 0;
-        return $exists;
+        // Call pdo_query_value and check if the result (number of rows) is greater than 0
+        return pdo_query_value($sql, $params) > 0;
     } catch (PDOException $e) {
-        throw new Exception("Failed to check product in cart: " . $sql . " - Error: " . $e->getMessage());
-    } finally {
-        $conn = null; // Close the connection
+        throw new Exception("Failed to check data: " . $sql . " - Error: " . $e->getMessage());
     }
 }

@@ -6,7 +6,7 @@ function select_order_item()
     return pdo_query($sql);
 }
 
-function add_order_item($id_cart, $price, $amount)
+function add_order_item($id_cart, $price, $amount = 1)
 {
     $sql = "INSERT INTO `order_item`(`id_cart`, `price`, `amount`) 
     VALUES ('$id_cart','$price','$amount')";

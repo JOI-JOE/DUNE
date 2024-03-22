@@ -1,6 +1,5 @@
 <?php
-// require '../../global.php';
-// require '../../Dao/control_Customer.php';
+require '../../Dao/control_Customer.php';
 extract($_REQUEST);
 
 if (exist_param('register')) {

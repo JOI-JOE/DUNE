@@ -3,7 +3,7 @@
     <div class="form signup_form">
         <div class="title">Change Password</div>
 
-        <form action="../Account/change_Ps.php" method="post" enctype="multipart/form-data">
+        <form action="../Main/index.php?changePs" method="post" enctype="multipart/form-data">
 
             <!-- input alert -->
             <?php
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <button class="button" name="changePs" type="submit">Change</button>
+                <button class="button" name="btn_changePs" type="submit">Change</button>
                 <div class="login_signup">Already have an account? <a href="../Main/index.php?login" id="login">Log In</a></div>
             </div>
         </form>

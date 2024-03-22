@@ -6,6 +6,7 @@ require "../../Dao/control_Sport.php";
 require "../../Dao/control_Cart.php";
 require '../../Dao/control_Color.php';
 require '../../Dao/control_Size.php';
+require '../../Dao/control_Order_Item.php';
 
 
 extract($_REQUEST);
@@ -22,8 +23,10 @@ if (exist_param('men', $_REQUEST)) {
     include_once "../Account/forget_Ps.php";
     $VIEW_NAME = "../Account/forget_Ps_form.php";
 } elseif (exist_param('signup', $_REQUEST)) {
+    include_once "../Account/signup.php";
     $VIEW_NAME = "../Account/signup_form.php";
 } elseif (exist_param('changePs', $_REQUEST)) {
+    include_once "../Account/change_Ps.php";
     $VIEW_NAME = "../Account/change_Ps_form.php";
     // cart
     // ============== SEARCH PRODUCTS ================= //

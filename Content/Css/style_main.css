@@ -914,13 +914,14 @@ aside .sidebar a:hover span {
   align-items: center;
 }
 
-.quantity input {
-  width: 40px;
+input[type="number"] {
+  width: 50%; /* Adjust width as needed */
+  padding: 5px;
   text-align: center;
   border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 5px;
-  margin: 0 5px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
 }
 
 .remove-button {
