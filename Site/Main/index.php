@@ -16,45 +16,68 @@ if (exist_param('men', $_REQUEST)) {
 } elseif (exist_param('sale', $_REQUEST)) {
     $VIEW_NAME = "sale.php";
 } elseif (exist_param('login', $_REQUEST)) {
+    include_once "../Account/login.php";
     $VIEW_NAME = "../Account/login_form.php";
 } elseif (exist_param('fgPw', $_REQUEST)) {
+    include_once "../Account/forget_Ps.php";
     $VIEW_NAME = "../Account/forget_Ps_form.php";
 } elseif (exist_param('signup', $_REQUEST)) {
     $VIEW_NAME = "../Account/signup_form.php";
 } elseif (exist_param('changePs', $_REQUEST)) {
     $VIEW_NAME = "../Account/change_Ps_form.php";
     // cart
-} elseif (exist_param('cart', $_REQUEST)) {
-    $VIEW_NAME = "../Product/cart_ui.php";
-
-    // search
+    // ============== SEARCH PRODUCTS ================= //
 } elseif (exist_param('search', $_REQUEST)) {
     // $kyw = $_GET['search'];
     $kwy = isset($_GET['search']) ? $_GET['search'] : '';
     $products = show_product($kwy);
     $VIEW_NAME = "../Product/list-ui.php";
-    // end search
+    // ============== BRAND PRODUCTS ================= //
 } elseif (exist_param('id_brand', $_REQUEST)) {
     $products = select_product_by_brand($id_brand);
     $VIEW_NAME = "../Product/list-ui.php";
+    // ============== SPORT PRODUCTS ================= //
 } elseif (exist_param('id_sport', $_REQUEST)) {
     $products = select_product_by_sport($id_sport);
     $VIEW_NAME = "../Product/list-ui.php";
+    // ============== DETAIL PRODUCTS ================= //
+} elseif (exist_param('cart', $_REQUEST)) {
+    $VIEW_NAME = "../Product/checkout_ui.php";
+    // ============== DETAIL PRODUCTS ================= //
 } elseif (exist_param('id_product', $_REQUEST)) {
     $products = show_product_one($id_product);
     extract($products);
-
     $color = loadall_color();
     $size = loadall_size();
-    // increase view 
     increase_view_product($id_product);
-
-
     $VIEW_NAME = "../Product/detail_ui.php";
-} elseif (exist_param('edit', $_REQUEST)) {
-    $VIEW_NAME = "../Account/update_Ac_form.php";
+    // ============== ADD PRODUCTS TO CART ================= //
+} elseif (exist_param('add_cart', $_REQUEST)) {
+    $id_product = $_REQUEST['add_cart'];
+    if (isset($_POST['name_size'])) {
+        $choose_size = $_POST['name_size'];
+        update_size_one($id_product, $choose_size);
+    }
+
+    $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
+    if (!check_Cart($id_product)) {
+        add_to_cart($id_customer, $id_product);
+    }
+    $VIEW_NAME = "../Product/checkout_ui.php";
+    // ============== CHECKOUT CART ================= //
 } elseif (exist_param('checkout', $_REQUEST)) {
-    $VIEW_NAME = "../Product/checkout.php";
+    $VIEW_NAME = "../Product/checkout_ui.php";
+    // ============== DELETE CART ================= //
+} elseif (exist_param('del_cart', $_REQUEST)) {
+    $id_cart = $_REQUEST['del_cart'];
+    delete_cart($id_cart);
+    $VIEW_NAME = "../Product/checkout_ui.php";
+    // ==============  DELETE ALL CART ================= //
+} elseif (exist_param('del_all', $_REQUEST)) {
+    $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
+    delete_all_cart($id_customer);
+    $VIEW_NAME = "../Product/checkout_ui.php";
+    // ==============  LOGOUT ================= //
 } elseif (exist_param('logout', $_REQUEST)) {
     session_unset();
     $VIEW_NAME = "../Account/login_form.php";
@@ -66,6 +89,7 @@ $user_email = isset($_SESSION['user']) ? $_SESSION['user']['email_customer'] : "
 $number = count_cart($user_email);
 $list_cart = show_list_cart($user_email);
 
+$list_size = loadall_size();
 $list_iconic = select_product_iconic();
 $list_product =  show_product();
 $list_brand  = show_brand();

@@ -29,6 +29,12 @@
 
     .product-description h2 {
         margin-top: 0;
+        font-size: 30px;
+        font-family: var(--body-font);
+    }
+
+    .product-description h3 {
+        font-size: 20px;
     }
 
     .product-description p {
@@ -148,6 +154,11 @@
         box-shadow: none;
         transform: translateY(0);
     }
+
+    .button-30 {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
 </style>
 
 <div class="detail title-product container">
@@ -161,9 +172,9 @@
         <!-- Grid2: Description and Review Box -->
         <div>
             <div class="product-description">
-                <h2 style="color:#000000"><?= $name_product ?></h2>
+                <h2 style="color:#000000;"><?= $name_product ?></h2>
                 <b>
-                    <h3 style="margin:1rem 0;color:hsl(199, 28%, 17%)">$<?= $price ?></h3>
+                    <h3 style="margin:1rem 0;color:hsl(199, 28%, 17%)">Price: $<?= $price ?></h3>
                 </b>
                 <p>
                     You already know they're crisp and clean. Their upper is made from leather and textiles, and they have that iconic Nike Air comfort in the sole. They're gonna go with any outfit—so what's it gonna be?
@@ -171,46 +182,36 @@
                     Colour Shown: White/Lobster/Sail/Dune Red <br>
                     Style: FJ3459-160
                 </p>
+                <form action="../Main/index.php?add_cart=<?= $id_product ?>" method="POST">
+                    <div class="select-container">
+                        <label for="size">Size:</label>
 
-                <div class="select-container">
-                    <label for="size">Size:</label>
-                    <select id="size">
+                        <select name="name_size" id="size">
+                            <?php
+                            foreach ($size as $sz) {
+                                extract($sz);
+                                echo "  <option  value='$sz[id_size]'>$sz[name_size]</option>\n"; // Use double quotes and proper array access
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="select-container">
+
+
+                        </select>
+                    </div>
+                    <div class="select-container">
                         <?php
-
-                        foreach ($size as $sz) {
-                            extract($sz);
-                            $selected = $sz['id_size'] == $id_size ? 'selected' : '';
-                            echo '
-                            <option value="' . $sz['id_size'] . '" ' . $selected . ' >' . $sz['name_size'] . '</option>
-
-                            ';
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="select-container">
-                    <label for="color">Color:</label>
-                    <select id="color">
-                        <?php
-                        foreach ($color as $cl) {
-                            extract($cl);
-                            $selected = $cl['id_color'] == $products['id_color'] ? 'selected' : '';
-                            echo '
-                            <option value="' . $cl['id_color'] . '" ' . $selected . ' >' . $cl['name_color'] . '</option>
-
-
-                            ';
+                        if ($_SESSION['user']) {
+                            echo '<form action="../Main/index.php?add_cart=' . $id_product . '" method="POST">
+                        <input type="submit" class="button-27" value="Add To Card">
+                        </form>';
                         }
                         ?>
 
-                    </select>
-                </div>
-                <div class="select-container">
-                    <form action="../Product/cart.php?id_product" method="POST">
-                        <input type="submit" class="button-27" name="add-cart" value="Add To Card">
-                    </form>
-                </div>
+                    </div>
             </div>
+            </form>
 
 
             <div class="review-box">

@@ -1,7 +1,7 @@
 <div class="form_container">
     <!-- Login From -->
     <div class="form login_form">
-        <form action="../Account/forget_Ps.php" method="post">
+        <form action="../Main/index.php?fgPw" method="post">
             <h2>Forgot Your Password?</h2>
 
             <!-- input alert -->

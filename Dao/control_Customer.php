@@ -8,18 +8,12 @@ function show_customer()
 }
 
 
-
-function insert_client($email, $password, $name, $img, $role, $active)
+function insert_client($email, $password, $name, $address, $phone, $img, $role, $active)
 {
     $sql = "INSERT INTO
-    `clients`(`email`, `password`, `name_client`, `img_client`, `role`, `active`) 
+     `customer`(`name_customer`, `email_customer`, `password_customer`, `address_customer`, `phone_customer`, `active`, `role`, `img_customer`)
     VALUES
-    ('$email',
-    '$password',
-    '$name',
-    '$img',
-    '$role',
-    '$active')";
+    ('$name','$email','$password','$address','$phone','$active','$role','$img')";
     pdo_execute($sql);
 }
 function delete_client($id_client)
@@ -27,6 +21,9 @@ function delete_client($id_client)
     $sql = "DELETE FROM `clients` WHERE id_client=" . $id_client;
     pdo_execute($sql);
 }
+
+
+
 function update_client_one($id_client, $email, $password, $name, $img, $role, $active)
 {
     if ($img != "") {
@@ -141,10 +138,8 @@ function validatePhone($phone)
 
     if (preg_match($pattern, $phone)) {
         // Kiểm tra thêm điều kiện khác
-        if ($phone[0] == '0') {
+        if ($phone[0] !== '0') {
             return 'Phone is invalid';
-        } else {
-            return 'Invalid phone number (must start with 0)';
         }
     } else {
         return 'Invalid phone number (incorrect format)';

@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <!-- =================================== CSS ======================================== -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/Css/style_main.css" />
+
 
     <title>Dune</title>
 
@@ -56,7 +58,7 @@
             </div>
 
 
-            <form method="GET" action="../Main/index.php">
+            <form method="GET" action="../Main/index.php?search">
                 <div class="form-input">
                     <input type="search" name="search" placeholder="Search..." />
                     <button class="search-btn" type="submit">
@@ -95,6 +97,8 @@
 
     <!-- -------------------------------------------------- -->
     <?php require "Main/footer.php" ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script>
         // -------------------------- PROFILE BUTTON -----------------------------
         let subMenu = document.getElementById("subMenu");

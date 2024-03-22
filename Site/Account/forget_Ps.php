@@ -1,5 +1,4 @@
 <?php
-require "../../global.php";
 require "../../Dao/control_Customer.php";
 
 extract($_REQUEST);
@@ -19,7 +18,3 @@ if (exist_param("btn_forget_Ps")) {
         $MESSAGE = "Your email is incorrect";
     }
 }
-
-
-$VIEW_NAME = "Account/forget_Ps_form.php";
-require "../layout.php";

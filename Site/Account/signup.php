@@ -1,6 +1,6 @@
 <?php
-require '../../global.php';
-require '../../Dao/control_Customer.php';
+// require '../../global.php';
+// require '../../Dao/control_Customer.php';
 extract($_REQUEST);
 
 if (exist_param('register')) {
@@ -34,7 +34,7 @@ if (exist_param('register')) {
         $file_name = save_file('img_customer', $target_dir);
         $img = $file_name ? $file_name : "user.png";
         try {
-            insert_client($email_client, $password, $name_client, $img, $role, $active);
+            insert_client($email_customer, $password, $name_customer, $address_customer, $phone_customer, $img, $role, $active);
             $MESSAGE = "Successfully Registered";
         } catch (Exception $exc) {
             $MESSAGE = "Not Successfully Registered";
@@ -43,6 +43,3 @@ if (exist_param('register')) {
 } else {
     global $email_customer, $password, $confirmPassword, $name_customer, $img, $address_customer, $phone_customer, $role, $active;
 }
-
-$VIEW_NAME = "Account/signup_form.php";
-require '../layout.php';

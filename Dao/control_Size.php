@@ -16,3 +16,9 @@ function loadall_size()
     $listsize = pdo_query($sql);
     return $listsize;
 }
+
+function select_size_by_id($id_size)
+{
+    $sql = "SELECT * FROM `size` WHERE `id_size`='$id_size'";
+    return pdo_query_one($sql);
+}

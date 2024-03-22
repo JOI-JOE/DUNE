@@ -1,7 +1,7 @@
 <div class="form_container">
     <!-- Login From -->
     <div class="form login_form">
-        <form action="../Account/login.php" method="post">
+        <form action="../Main/index.php?login" method="post">
             <h2>Login</h2>
 
             <!-- input alert -->
@@ -38,8 +38,8 @@
                 <a href="../Main/index.php?fgPw" class="forgot_pw">Forgot password?</a>
             </div>
 
-
             <button class="button" name="btn_login" type="submit">Login Now</button>
+
             <div class="login_signup">Don't have an account? <a href="../Main/index.php?signup" id="signup">Signup</a></div>
         </form>
     </div>

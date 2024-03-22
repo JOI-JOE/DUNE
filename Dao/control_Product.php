@@ -106,6 +106,13 @@ function select_product_by_sport($id_sport)
     return pdo_query($sql);
 }
 
+function update_size_one($id_product, $id_size)
+{
+    $sql = "UPDATE `product` SET `id_size`='$id_size' WHERE `id_product`='$id_product'";
+    pdo_execute($sql);
+}
+
+
 
 // ----------------------------------------------------------------------------------------
 
