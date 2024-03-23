@@ -1,4 +1,6 @@
 <?php
+require_once "pdo.php";
+
 function insert_size($name_size)
 {
     $sql = "INSERT INTO size(name_size) VALUES('$name_size')";
@@ -19,6 +21,6 @@ function loadall_size()
 
 function select_size_by_id($id_size)
 {
-    $sql = "SELECT * FROM `size` WHERE `id_size`='$id_size'";
+    $sql = "SELECT `name_size` FROM `size` WHERE `id_size`='$id_size'";
     return pdo_query_one($sql);
 }

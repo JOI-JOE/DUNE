@@ -6,7 +6,7 @@ require "../../Dao/control_Sport.php";
 require "../../Dao/control_Cart.php";
 require '../../Dao/control_Color.php';
 require '../../Dao/control_Size.php';
-require '../../Dao/control_Order_Item.php';
+
 
 
 extract($_REQUEST);
@@ -61,12 +61,22 @@ if (exist_param('men', $_REQUEST)) {
         $choose_size = $_POST['name_size'];
         update_size_one($id_product, $choose_size);
     }
-
     $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
-    if (!check_Cart($id_product)) {
+
+    if (check_product_in_cart($id_customer, $id_product)) {
+        // echo "The product ($product_id) is already in customer $customer_id's cart.";
+    } else {
         add_to_cart($id_customer, $id_product);
+        // echo "Product ($id_customer) added to customer $customer_id's cart.";
     }
+    // add_to_cart($id_customer, $id_product);
+    // }
     $VIEW_NAME = "../Product/checkout_ui.php";
+    // ============== ADD CART TO ORDER ITEM ================= //
+} elseif (exist_param('ad_orI', $_REQUEST)) {
+    include_once "../Product/check_last.php";
+    $VIEW_NAME = "../Product/check_last_ui.php";
+
     // ============== CHECKOUT CART ================= //
 } elseif (exist_param('checkout', $_REQUEST)) {
     $VIEW_NAME = "../Product/checkout_ui.php";
@@ -90,8 +100,8 @@ if (exist_param('men', $_REQUEST)) {
 
 $user_email = isset($_SESSION['user']) ? $_SESSION['user']['email_customer'] : "";
 $number = count_cart($user_email);
-$list_cart = show_list_cart($user_email);
 
+$list_cart = show_list_cart($user_email);
 $list_size = loadall_size();
 $list_iconic = select_product_iconic();
 $list_product =  show_product();

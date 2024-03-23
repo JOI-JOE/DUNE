@@ -47,7 +47,12 @@ function update_client_one($id_client, $email, $password, $name, $img, $role, $a
     pdo_execute($sql);
 }
 
-
+// ------------------ Function ------------------ //
+function show_customer_by_cart($id_product)
+{
+    $sql = "SELECT * FROM `customer` WHERE `id_product` =" . $id_product;
+    return pdo_query($sql);
+}
 
 
 // ------------------ Function For Login + Sigup + Forget  ------------------ //
@@ -63,6 +68,7 @@ function show_customer_by_email($email)
     $sql = "SELECT * FROM `customer` WHERE `email_customer` = '$email'";
     return pdo_query_one($sql);
 }
+
 
 function email_exist($email)
 {

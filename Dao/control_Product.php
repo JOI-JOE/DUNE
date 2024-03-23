@@ -31,9 +31,20 @@ function show_product($kyw = "", $id_brand = 0, $id_color = 0, $id_size = 0, $id
     $listproduct = pdo_query($sql);
     return $listproduct;
 }
+// function show_product_one($id_product)
+// {
+//     $sql = "SELECT p.*, sz.name_size  -- Select specific columns for efficiency
+//     FROM product AS p
+//     JOIN size AS sz ON p.id_size = sz.id_size
+//     WHERE p.id_product = '$id_product'";
+//     return pdo_query($sql);
+// }
 function show_product_one($id_product)
 {
-    $sql = "SELECT * FROM `product` WHERE `id_product` =  '$id_product'";
+    $sql = "SELECT * FROM `product` p
+    INNER JOIN color c ON p.id_color = c.id_color
+    INNER JOIN size sz ON p.id_size = sz.id_size
+    WHERE `id_product` =  '$id_product'";
     return pdo_query_one($sql);
 }
 function insert_product($name, $type, $genre, $date, $price, $sale, $option, $img)
@@ -80,6 +91,8 @@ function select_all_product()
     $sql = "SELECT * FROM  `product`";
     return pdo_query($sql);
 }
+
+
 
 function select_product_by_brand($id_brand)
 {

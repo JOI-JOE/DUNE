@@ -53,3 +53,15 @@ function check_Cart($id_product)
     $sql = "SELECT * FROM  `cart` WHERE `id_product` = '$id_product'";
     return pdo_check_data($sql) > 0;
 }
+
+
+function check_product_in_cart($id_customer, $id_product)
+{
+    $sql = "SELECT COUNT(*) AS product_count FROM cart
+            WHERE `id_customer` = :id_customer AND `id_product` = :id_product";
+
+    return (bool) pdo_query_value($sql, [
+        ':id_customer' => $id_customer,
+        ':id_product' => $id_product
+    ]);
+}
