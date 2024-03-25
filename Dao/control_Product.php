@@ -93,12 +93,40 @@ function select_all_product()
 }
 
 
+// ------------------ Function For MEN ------------------ //
 
 function select_product_by_brand($id_brand)
 {
     $sql = "SELECT * FROM  `product` Where `id_brand`='$id_brand'";
     return pdo_query($sql);
 }
+
+function select_product_by_color($id_color)
+{
+    $sql = "SELECT * FROM  `product` Where `id_color`='$id_color'";
+    return pdo_query($sql);
+}
+
+function select_product_by_size($id_size)
+{
+    $sql = "SELECT * FROM  `product` Where `id_size`='$id_size'";
+    return pdo_query($sql);
+}
+
+function select_product_by_catergory($id_catergory)
+{
+    $sql = "SELECT * FROM  `product` Where `id_catergory`='$id_catergory'";
+    return pdo_query($sql);
+}
+
+
+function select_product_by_sport($id_sport)
+{
+    $sql = "SELECT * FROM  `product` Where `id_sport`='$id_sport'";
+    return pdo_query($sql);
+}
+
+// ------------------ Function For MEN ------------------ //
 
 function select_product_iconic()
 {
@@ -113,11 +141,6 @@ function increase_view_product($id_product)
     return pdo_query($sql);
 }
 
-function select_product_by_sport($id_sport)
-{
-    $sql = "SELECT * FROM  `product` Where `id_sport`='$id_sport'";
-    return pdo_query($sql);
-}
 
 function update_size_one($id_product, $id_size)
 {

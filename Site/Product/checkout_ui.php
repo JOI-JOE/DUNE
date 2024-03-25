@@ -3,6 +3,9 @@
 
         <!-- <form action="../Main/index.php?ad_orI" method="post"> -->
         <!-- <form action="../Product/check_last_ui.php" method="post"> -->
+        <?php
+        $button
+        ?>
         <form action="" method="POST">
             <?php
             foreach ($list_cart as $ls) {
@@ -44,10 +47,9 @@
 
                                     </ul>
                                     <a href="../Main/index.php?del_cart=<?= $id_cart ?>">
-                                        <span class="remove">Remove</span>
+                                        <span class="remove" name="remove">Remove</span>
                                     </a>
-                                    <?= $id_cart ?>
-                                    <?= $price ?>
+                                    <input type="hidden" name="id_cart" value="<?= $id_cart ?>">
 
                                 </div>
                             </div>
@@ -62,11 +64,14 @@
     <div class="checkout-section">
         <h2>Total Price</h2>
         <p id="totalPrice" style="margin:2rem 0;">$0.00</p>
-        <input type="submit" class=" checkout-main" name="btn_checkout" <?= empty($id_cart)  ? "disabled style='opacity: 0.5;'" : "" ?> value="Buy Now">
+
+        <input type="submit" class="checkout-main" name="btn_checkout" <?= empty($id_cart) ? 'disabled  style="opacity:0.2 ;"' : "" ?> value="Buy Now">
         </form>
+
         <?php
         include_once "check_order.php";
         ?>
+
         <?php
         if (isset($_POST['btn_checkout'])) {
             echo '

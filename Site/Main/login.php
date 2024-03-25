@@ -28,11 +28,12 @@
             </p>
             <span>></span>
             </a>
+            
+            <a href="../Main/index.php?his_cart" class="sub-menu-link">
+            <p>List Cart</p>
+            <span>></span>
+            </a>
            ';
-            //    <a href="../Main/index.php?edit" class="sub-menu-link">
-            //    <p>Edit Profile</p>
-            //    <span>></span>
-            //    </a>
         }
         ?>
 

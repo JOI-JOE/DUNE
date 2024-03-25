@@ -37,3 +37,9 @@ function show_order_item()
     $sql = "SELECT * FROM `order_item` ";
     return pdo_query($sql);
 }
+
+function delete_order_item()
+{
+    $sql = "DELETE FROM `order_item`";
+    pdo_execute($sql);
+}

@@ -97,7 +97,6 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total Price</th>
-                    <th></th>
                 </tr>
             </thead>
             <form action="" method="POST">
@@ -106,14 +105,11 @@
                     foreach ($order_item as $lc) {
                         extract($lc);
                         echo '<tr>
-                    <td>' . $id_cart . '$</td>
+                    <td>' . $id_cart . '</td>
                     <td>' . $price . '$</td>
                     <td>' . $quantity . '</td>
                     <td>' . $total_item . '$</td>
-                    <td>
                     <input type="hidden" name="id_order" value="' . $id_cart . '">
-                    <input type="submit" class="button-86 name="del_order" value"Remove">
-                    </td>
                     </tr>';
                     }
                     ?>
@@ -121,13 +117,13 @@
             </form>
         </table>
 
-
-
-        <div class="checkout-section">
-            <h2>Total Price</h2>
-            <p id="totalPrice">
-                $<?= $total ?>
-            </p>
-            <input type="submit" value="Checkout">
-        </div>
+        <form action="" method="post">
+            <div class="checkout-section">
+                <h2>Total Price</h2>
+                <p id="totalPrice">
+                    $<?= $total ?>
+                </p>
+                <input type="submit" name="checkout" value="Checkout">
+            </div>
+        </form>
     </div>

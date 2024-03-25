@@ -35,9 +35,10 @@ if (exist_param('btn_checkout', $_REQUEST)) {
 
             $total += $item['subtotal'];
         }
-
-
         $isProcessing = true;
     }
+}
+if (!exist_param('btn_checkout', $_REQUEST)) {
+    delete_order_item();
 }
 // echo $total;

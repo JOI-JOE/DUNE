@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="../Main/index.php?sale" class="nav__link">Sale</a>
+                        <a href="../Main/index.html" class="nav__link">Blog</a>
                     </li>
                 </ul>
             </div>

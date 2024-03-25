@@ -1,6 +1,7 @@
 <?php
 require "../../Dao/control_Customer.php";
 require "../../Dao/control_Order_Item.php";
+require "../../Dao/control_Order.php";
 
 $user_email = isset($_SESSION['user']) ? $_SESSION['user']['email_customer'] : "";
 $user = show_customer_by_email($user_email);
@@ -18,5 +19,9 @@ $items = total_order();  // Assuming $items is an array of results
 foreach ($items as $item) {
     $total += $item['total_item']; // Add each item's total to the overall total
 }
-
 $order_item = show_order_item();
+
+if (isset($_POST['checkout'])) {
+    add_order($id_customer, $dateOrder, $status, $address, $total);
+    header("Location: ../Main/index.php?ck_ls");
+}
