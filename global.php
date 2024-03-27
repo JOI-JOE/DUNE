@@ -48,14 +48,17 @@ defined('SITE_URL') || define('SITE_URL', 'http://localhost/BOX_PHP/DUNE');
 function check_login()
 {
 
-    // Kiểm tra nghiêm ngặt quyền truy cập
     if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'boss') {
         // Kiểm tra nếu đường dẫn yêu cầu có chứa '/Admin/'
         if (str_contains($_SERVER['REQUEST_URI'], '/Admin/')) {
-            // Lưu trữ URL đầy đủ (không chỉ một phần)
             $_SESSION['request_uri'] = $_SERVER['REQUEST_URI'];
 
-            // Sử dụng hàm chuyển hướng với lưu trữ URL gốc
+            header("Location: " . SITE_URL . "/Site/Main/index.php?return=" . rawurlencode($_SERVER['REQUEST_URI']));
+            exit; // Thoát hàm để ngăn chặn thực thi tiếp
+        }
+
+        if (str_contains($_SERVER['REQUEST_URI'], '/BOX_PHP/DUNE/Admin/')) {
+            echo "Bạn không có quyền truy cập vào thư mục Admin.";
             header("Location: " . SITE_URL . "/Site/Main/index.php?return=" . rawurlencode($_SERVER['REQUEST_URI']));
             exit; // Thoát hàm để ngăn chặn thực thi tiếp
         }

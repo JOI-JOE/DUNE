@@ -39,7 +39,7 @@
                 <?php
                 foreach ($list_sport as $sport) {
                     extract($sport);
-                    $link = "../Main/index.php?id_sport=$id_sport";
+                    $link = "../Main/index.php?men=id_sport=$id_sport";
                     echo '
                         <li><a href="' . $link . '"><img src="../../Content/Images/poster/' . $name_sport . '.webp" alt=""></a>
                         <span class="sub_title">' . $name_sport . '</span>
@@ -83,7 +83,7 @@
                         <div class="detail-box">
                             <div class="type">
                             <a href="../Main/index.php?id_product=' . $id_product . '">' . $name_product . '</a>
-                                <span>' . $sale . '%</span>
+                                <span></span>
                             </div>
                             <!-- price -->
                             <a href="#" class="price">$' . $price . '</a>

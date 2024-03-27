@@ -1,4 +1,5 @@
 <?php
+
 require "../../global.php";
 require "../../Dao/control_Product.php";
 require "../../Dao/control_Brand.php";
@@ -7,11 +8,12 @@ require "../../Dao/control_Cart.php";
 require '../../Dao/control_Color.php';
 require '../../Dao/control_Size.php';
 require '../../Dao/control_Catergory.php';
+require '../../Dao/control_History_Cart.php';
 
 
 
 extract($_REQUEST);
-
+// ---------------- PAGE MEN ---------------- //
 if (exist_param('men', $_REQUEST)) {
     $list_cate = loadall_catergory();
     $list_color = loadall_color();
@@ -44,40 +46,37 @@ if (exist_param('men', $_REQUEST)) {
         $list_product =  show_product();
     }
     $VIEW_NAME = "men.php";
+
+    // ---------------- PAGE NEW ---------------- //
 } elseif (exist_param('new', $_REQUEST)) {
     $VIEW_NAME = "new.php";
 
-    // } elseif (exist_param('sale', $_REQUEST)) {
-    //     include_once "index.php";
-    //     // $VIEW_NAME = "sale.php";
+    // ---------------- PAGE LOGIN ---------------- //
 } elseif (exist_param('login', $_REQUEST)) {
     include_once "../Account/login.php";
     $VIEW_NAME = "../Account/login_form.php";
+
+    // ---------------- PAGE FORGET PASS ---------------- //
 } elseif (exist_param('fgPw', $_REQUEST)) {
     include_once "../Account/forget_Ps.php";
     $VIEW_NAME = "../Account/forget_Ps_form.php";
+
+    // ---------------- PAGE SIGNUP ---------------- //
 } elseif (exist_param('signup', $_REQUEST)) {
     include_once "../Account/signup.php";
     $VIEW_NAME = "../Account/signup_form.php";
+
+    // ---------------- PAGE CHANGE PASS ---------------- //
 } elseif (exist_param('changePs', $_REQUEST)) {
     include_once "../Account/change_Ps.php";
     $VIEW_NAME = "../Account/change_Ps_form.php";
-    // cart
+
     // ============== SEARCH PRODUCTS ================= //
 } elseif (exist_param('search', $_REQUEST)) {
     // $kyw = $_GET['search'];
     $kwy = isset($_GET['search']) ? $_GET['search'] : '';
     $products = show_product($kwy);
     $VIEW_NAME = "../Product/list-ui.php";
-    // ============== BRAND PRODUCTS ================= //
-} elseif (exist_param('id_brand', $_REQUEST)) {
-    $products = select_product_by_brand($id_brand);
-    $VIEW_NAME = "../Product/list-ui.php";
-    // ============== SPORT PRODUCTS ================= //
-} elseif (exist_param('id_sport', $_REQUEST)) {
-    $products = select_product_by_sport($id_sport);
-    $VIEW_NAME = "../Product/list-ui.php";
-    // ============== DETAIL PRODUCTS ================= //
 } elseif (exist_param('cart', $_REQUEST)) {
     $VIEW_NAME = "../Product/checkout_ui.php";
     // ============== DETAIL PRODUCTS ================= //
@@ -123,7 +122,7 @@ if (exist_param('men', $_REQUEST)) {
     // ============== DELETE CART ================= //
 } elseif (exist_param('del_cart', $_REQUEST)) {
     $id_cart = $_REQUEST['del_cart'];
-    header("Refresh: 1; url=../Main/index.php?cart");
+    header("Refresh: 0.2; url=../Main/index.php?cart");
     delete_cart($id_cart);
     $VIEW_NAME = "../Product/checkout_ui.php";
     // ==============  DELETE ALL CART ================= //
@@ -140,7 +139,7 @@ if (exist_param('men', $_REQUEST)) {
 }
 
 $user_email = isset($_SESSION['user']) ? $_SESSION['user']['email_customer'] : "";
-$id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
+$id_customer = isset($_SESSION['user']['id_customer']) ?  $_SESSION['user']['id_customer'] : "";
 
 $number = count_cart($user_email);
 $list_cart = show_list_cart($user_email);

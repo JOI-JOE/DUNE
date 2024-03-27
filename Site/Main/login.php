@@ -12,7 +12,7 @@
         if (isset($_SESSION['user'])) {
             if ($_SESSION['user']['role'] === "boss") {
                 echo
-                '<a href="http://localhost/BOX_PHP/Fromsorfware/Admin/Main/" class="sub-menu-link">
+                '<a href="http://localhost/BOX_PHP/DUNE/Admin/admin/" class="sub-menu-link">
                 <p>Admin</p>
                 <span>></span>
                 </a>';
@@ -24,15 +24,16 @@
         <?php
         if (isset($_SESSION['user'])) {
             echo '<a href="../Main/index.php?changePs" class="sub-menu-link">
+            <a href="../Main/index.php?his_cart" class="sub-menu-link">
+            <p>My Order</p>
+            <span>></span>
+            </a>
+            
             <p>Change Password
             </p>
             <span>></span>
             </a>
             
-            <a href="../Main/index.php?his_cart" class="sub-menu-link">
-            <p>List Cart</p>
-            <span>></span>
-            </a>
            ';
         }
         ?>

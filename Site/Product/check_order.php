@@ -23,7 +23,7 @@ if (exist_param('btn_checkout', $_REQUEST)) {
         }, $quantities, $list_cart);
 
         $total = 0; // Initialize total to zero
-
+        $dateOrder = date('Y-m-d');
         foreach ($cart_items as $item) {
             $id_cart = $item['id_cart'];
             $price = $item['price'];
@@ -31,6 +31,7 @@ if (exist_param('btn_checkout', $_REQUEST)) {
             $total_item = $price * $quantity;
             if (!check_order_item($id_cart)) {
                 add_order_item($id_cart, $price, $total_item, $quantity);
+                add_his_cart($quantity, $id_cart, $id_customer, $dateOrder);
             }
 
             $total += $item['subtotal'];

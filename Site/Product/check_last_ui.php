@@ -17,12 +17,15 @@
     }
 
     td {
+        width: 20px;
+        height: 50px;
         text-align: center;
-
+        color: black;
         padding: 10px 15px;
         border: 1px solid #ddd;
-        vertical-align: top;
+        vertical-align: center;
     }
+
 
     .button-86 {
         background-color: #3498db;
@@ -36,6 +39,16 @@
 
     .button-86:hover {
         background-color: #2980b9;
+    }
+
+    #totalPrice {
+        color: black;
+        margin: 10px;
+        font-size: 30px;
+    }
+
+    h3 {
+        color: black;
     }
 </style>
 
@@ -67,12 +80,14 @@
         <table>
             <thead>
                 <tr>
+                    <th>Img</th>
                     <th>Name</th>
                     <th>Size</th>
                     <th>Color</th>
                 </tr>
             </thead>
             <tbody>
+
                 <?php
                 foreach ($list_cart as $lc) {
                     extract($lc);
@@ -81,6 +96,10 @@
                     extract($products);
                     echo '
                     <tr>
+                    
+                    <td >
+                    <img src="../../Content/Images/product/' . $img_product . '" alt="" >
+                    </td>
                      <td>' . $name_product . '</td>
                     <td>' . $name_size . '</td>
                     <td>' . $name_color . '</td>

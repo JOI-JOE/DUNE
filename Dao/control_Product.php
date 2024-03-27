@@ -31,14 +31,7 @@ function show_product($kyw = "", $id_brand = 0, $id_color = 0, $id_size = 0, $id
     $listproduct = pdo_query($sql);
     return $listproduct;
 }
-// function show_product_one($id_product)
-// {
-//     $sql = "SELECT p.*, sz.name_size  -- Select specific columns for efficiency
-//     FROM product AS p
-//     JOIN size AS sz ON p.id_size = sz.id_size
-//     WHERE p.id_product = '$id_product'";
-//     return pdo_query($sql);
-// }
+
 function show_product_one($id_product)
 {
     $sql = "SELECT * FROM `product` p
@@ -46,43 +39,6 @@ function show_product_one($id_product)
     INNER JOIN size sz ON p.id_size = sz.id_size
     WHERE `id_product` =  '$id_product'";
     return pdo_query_one($sql);
-}
-function insert_product($name, $type, $genre, $date, $price, $sale, $option, $img)
-{
-    $sql = "INSERT INTO `products`(`name_product`, `price_product`, `sale_product`, `img_product`, `description`,`id_commodity`, `special`, `date_product`) 
-    VALUES ('$name','$price','$sale','$img','$option','$type','$genre','$date')";
-    pdo_execute($sql);
-}
-function delete_product($id_type)
-{
-    $sql = "DELETE FROM `products` WHERE  `id_product` =" . $id_type;
-    pdo_execute($sql);
-}
-function update_product_one($id_product, $name, $price, $sale, $img_product, $description, $type, $genre, $date)
-{
-    if ($img_product !== "") {
-        $sql = "UPDATE `products` 
-        SET 
-        `name_product`='$name',
-        `price_product`='$price',
-        `sale_product`='$sale',
-        `img_product`='$img_product',
-        `description`='$description',
-        `id_commodity`='$type',
-        `special`='$genre',
-        `date_product`='$date' WHERE `id_product`='$id_product'";
-    } else {
-        $sql = "UPDATE `products` 
-        SET 
-        `name_product`='$name',
-        `price_product`='$price',
-        `sale_product`='$sale',
-        `description`='$description',
-        `id_commodity`='$type',
-        `special`='$genre',
-        `date_product`='$date' WHERE `id_product`='$id_product'";
-    }
-    pdo_execute($sql);
 }
 
 // ------------------ Function For Main ------------------ //

@@ -3,7 +3,7 @@
             <?php
             foreach ($list_brand as $brand) {
                 extract($brand);
-                $link = "../Main/index.php?id_brand=$id_brand";
+                $link = " ../Main/index.php?men=id_brand=$id_brand";
                 echo '
                 <a href="' . $link . '">
                 <span><img src="../../Content/Images/icon/' . $name_brand . '.png" alt=""></span>

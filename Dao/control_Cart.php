@@ -30,10 +30,10 @@ function add_to_cart($id_customer, $id_product)
     pdo_execute($sql);
 }
 
-function select_cart_one($id_product)
+function select_cart_id($id_customer)
 {
-    $sql = "SELECT * FROM `cart` WHERE `id_customer` = '$id_product'";
-    return pdo_query_one($sql);
+    $sql = "SELECT * FROM `cart` WHERE `id_customer` = '$id_customer' AND `status` = '1'";
+    return pdo_query($sql);
 }
 
 function delete_cart($id_cart)

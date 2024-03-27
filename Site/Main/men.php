@@ -10,7 +10,7 @@
         border-color: #f5f5f5 #eee #d5d5d5 #eee;
         box-shadow: 0 5px 0 rgba(200, 200, 200, .2);
         margin-bottom: 30px;
-        width: 350px;
+        max-width: 320px;
         top: 100px;
     }
 
@@ -94,8 +94,9 @@
     }
 
     .box-card {
+        margin-top: 2rem;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 300px);
         gap: 1rem;
     }
 </style>
@@ -189,7 +190,7 @@
             </ul>
         </div>
         <div class="product-by-menu">
-            <div class="swiper-wrapper box-card">
+            <div class="box-card">
                 <?php
                 foreach ($list_product as $tr) {
                     extract($tr);

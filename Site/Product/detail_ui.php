@@ -1,11 +1,4 @@
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f8f8;
-        margin: 0;
-        padding: 0;
-    }
-
     .Box {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -66,7 +59,7 @@
     }
 
     .review-box {
-        padding: 20px;
+        padding: 10px;
         background-color: #fff;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -159,6 +152,20 @@
         padding: 10px 20px;
         cursor: pointer;
     }
+
+    .review-box h3 {
+        font-size: 30px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .customer-comment {
+        padding: 10px;
+    }
+
+    .customer-comment strong {
+        margin-right: 20px;
+    }
 </style>
 
 <div class="detail title-product container">
@@ -171,17 +178,36 @@
 
         <!-- Grid2: Description and Review Box -->
         <div>
+
             <div class="product-description">
                 <h2 style="color:#000000;"><?= $name_product ?></h2>
                 <b>
                     <h3 style="margin:1rem 0;color:hsl(199, 28%, 17%)">Price: $<?= $price ?></h3>
                 </b>
+
                 <p>
                     You already know they're crisp and clean. Their upper is made from leather and textiles, and they have that iconic Nike Air comfort in the sole. They're gonna go with any outfit—so what's it gonna be?
                     <br>
                     Colour Shown: White/Lobster/Sail/Dune Red <br>
                     Style: FJ3459-160
                 </p>
+                <div class="review-box">
+                    <div class="review">
+                        <h4 style="color: #333;padding:5px">Leave Your Review</h4>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5">&#9733;</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">&#9733;</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">&#9733;</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">&#9733;</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1">&#9733;</label>
+                        </div>
+                    </div>
+                </div>
                 <form action="../Main/index.php?add_cart=<?= $id_product ?>" method="POST">
                     <div class="select-container">
                         <label for="size">Size:</label>
@@ -202,7 +228,7 @@
                     </div>
                     <div class="select-container">
                         <?php
-                        if ($_SESSION['user']) {
+                        if (isset($_SESSION['user'])) {
                             echo '<form action="../Main/index.php?add_cart=' . $id_product . '" method="POST">
                         <input type="submit" class="button-27" value="Add To Card">
                         </form>';
@@ -214,42 +240,95 @@
             </form>
 
 
-            <div class="review-box">
-                <h3>Customer Reviews</h3>
-                <div class="review">
-                    <h4>Leave Your Review</h4>
-                    <div class="star-rating">
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">&#9733;</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">&#9733;</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">&#9733;</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">&#9733;</label>
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">&#9733;</label>
-                    </div>
-                    <textarea id="reviewText" rows="1" cols="50" class="review-textarea" placeholder="Write your review here" disabled><?= $description ?></textarea>
-
-                    <?php
-                    if (isset($_SESSION['user'])) {
-                    ?>
-                        <form action="detail.php?id_product=<?= $id_product ?>" id="form-send" method="post">
-                            <textarea id="reviewText" rows="4" cols="50" class="review-textarea" placeholder="Write your review here"></textarea>
-                            <button class="submit-button">Submit Review</button>
-                            <input type="hidden" name="id_product" value="<?= $_GET['id_product'] ?>">
-                        </form>
-                    <?php
-                    }
-                    ?>
 
 
-                </div>
-            </div>
         </div>
 
 
     </div>
+    <!-- Review box with customer comments -->
+    <div class="review-box" id="reviewBox">
+        <h3>Customer Reviews</h3>
+        <div class="review" id="customerReviews">
+            <!-- First three customer comments -->
+            <div class="customer-comment">
+                <p><strong>Admin</strong> aaaa</p>
+                <div class="date">
+                    <small>12.2.2</small>
+                </div>
+            </div>
+            <div class="customer-comment">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
 
+            <!-- Hidden comment -->
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+            <div class="customer-comment hidden">
+                <p><strong>Admin</strong> aaaa</p>
+            </div>
+
+            <!-- Button to show more comments -->
+            <button id="showMoreBtn" onclick="toggleComments()">Show More Comments</button>
+        </div>
+    </div>
+
+
+
+    <?php
+    if (isset($_SESSION['user'])) {
+    ?>
+        <form action="detail.php?id_product=<?= $id_product ?>" id="form-send" method="post">
+            <textarea id="reviewText" rows="4" cols="50" class="review-textarea" placeholder="Write your review here"></textarea>
+            <button class="submit-button">Submit Review</button>
+            <input type="hidden" name="id_product" value="<?= $_GET['id_product'] ?>">
+        </form>
+    <?php
+    }
+    ?>
 </div>
+<script>
+    function toggleComments() {
+        var hiddenComments = document.querySelectorAll('.customer-comment.hidden');
+        var button = document.getElementById('showMoreBtn');
+
+        if (hiddenComments.length > 0) {
+            // Show hidden comments
+            hiddenComments.forEach(function(comment) {
+                comment.classList.remove('hidden');
+            });
+            button.textContent = 'Hide Comments';
+        } else {
+            // Hide shown comments except the first three
+            var allComments = document.querySelectorAll('.customer-comment');
+            allComments.forEach(function(comment, index) {
+                if (!comment.classList.contains('hidden') && index > 2) {
+                    comment.classList.add('hidden');
+                }
+            });
+            button.textContent = 'Show More Comments';
+        }
+    }
+</script>
