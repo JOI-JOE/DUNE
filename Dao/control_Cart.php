@@ -13,6 +13,15 @@ function show_list_cart($email)
     return pdo_query($sql);
 }
 
+function select_product_by_id_cart($id_cart)
+{
+    $sql = "SELECT *
+    FROM `cart` C
+    INNER JOIN `product` Pr ON Pr.id_product = C.id_product
+    WHERE C.id_cart = '$id_cart' 
+          ";
+    return pdo_query_one($sql);
+}
 function show_list_his_cart($id_customer)
 {
     $sql = "SELECT *

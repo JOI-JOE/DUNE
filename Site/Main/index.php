@@ -9,6 +9,8 @@ require '../../Dao/control_Color.php';
 require '../../Dao/control_Size.php';
 require '../../Dao/control_Catergory.php';
 require '../../Dao/control_History_Cart.php';
+require '../../Dao/control_Comment.php';
+
 
 
 
@@ -82,10 +84,23 @@ if (exist_param('men', $_REQUEST)) {
     // ============== DETAIL PRODUCTS ================= //
 } elseif (exist_param('id_product', $_REQUEST)) {
     $products = show_product_one($id_product);
+    $box_comment = comment_select_by_product($id_product);
     extract($products);
     $color = loadall_color();
     $size = loadall_size();
     increase_view_product($id_product);
+    if (isset($_POST['add_comment'])) {
+        $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
+        // echo "hau dep tai" . "<br>";
+        // echo $id_product . "<br>";
+        // echo $id_customer  . "<br>";
+        // echo $content_comment;
+        if (!empty($content_comment) && !comment_exists($id_customer, $id_product)) {
+            header("Refresh: 0.1;");
+            $dateOrder = date('Y-m-d');
+            comment_insert($id_customer, $id_product, $content_comment, $dateOrder);
+        }
+    }
     $VIEW_NAME = "../Product/detail_ui.php";
     // ============== ADD PRODUCTS TO CART ================= //
 } elseif (exist_param('add_cart', $_REQUEST)) {
@@ -116,6 +131,12 @@ if (exist_param('men', $_REQUEST)) {
 } elseif (exist_param('his_cart', $_REQUEST)) {
     require "history.php";
     $VIEW_NAME = "history_cart.php";
+} elseif (exist_param('detail_order', $_REQUEST)) {
+    $id_order = $_REQUEST['detail_order'];
+    require "../../Dao/control_Order.php";
+    $list_order = select_one_order($id_order);
+    extract($list_order);
+    $VIEW_NAME = "detail_his_order.php";
     // ============== CHECKOUT CART ================= //
 } elseif (exist_param('checkout', $_REQUEST)) {
     $VIEW_NAME = "../Product/checkout_ui.php";

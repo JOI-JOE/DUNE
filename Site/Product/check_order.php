@@ -3,11 +3,7 @@ require '../../Dao/control_Order_Item.php';
 require '../../Dao/control_Order.php';
 require "../../Dao/control_Customer.php";
 
-// echo $name_customer;
-// echo $dateOrder = date('Y-m-d');
-// echo $status = "Bắt đầu";
-// echo $address = $address_customer;
-// echo $id_customer = $id_customer;
+
 
 if (exist_param('btn_checkout', $_REQUEST)) {
     // Flag to prevent multiple submissions

@@ -6,6 +6,5 @@ $user_email = isset($_SESSION['user']) ? $_SESSION['user']['email_customer'] : "
 $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
 
 $orders = show_order($id_customer);
-extract($orders);
 
 $list_cart_his =  show_list_his_cart($id_customer);

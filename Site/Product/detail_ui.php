@@ -161,6 +161,8 @@
 
     .customer-comment {
         padding: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
     }
 
     .customer-comment strong {
@@ -251,45 +253,22 @@
         <h3>Customer Reviews</h3>
         <div class="review" id="customerReviews">
             <!-- First three customer comments -->
-            <div class="customer-comment">
-                <p><strong>Admin</strong> aaaa</p>
+            <?php
+
+            foreach ($box_comment as $bc) {
+                extract($bc);
+                echo '
+                <div class="customer-comment">
+                <p><strong>' . $name_customer . ' :</strong> 
+               " ' . $content . ' "
+                </p>
                 <div class="date">
-                    <small>12.2.2</small>
+                    <small>' . $date_comment . '</small>
                 </div>
             </div>
-            <div class="customer-comment">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-
-            <!-- Hidden comment -->
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-            <div class="customer-comment hidden">
-                <p><strong>Admin</strong> aaaa</p>
-            </div>
-
+                ';
+            }
+            ?>
             <!-- Button to show more comments -->
             <button id="showMoreBtn" onclick="toggleComments()">Show More Comments</button>
         </div>
@@ -300,9 +279,9 @@
     <?php
     if (isset($_SESSION['user'])) {
     ?>
-        <form action="detail.php?id_product=<?= $id_product ?>" id="form-send" method="post">
-            <textarea id="reviewText" rows="4" cols="50" class="review-textarea" placeholder="Write your review here"></textarea>
-            <button class="submit-button">Submit Review</button>
+        <form action="" id="form-send" method="post">
+            <textarea id="reviewText" rows="4" cols="50" class="review-textarea" name="content_comment" placeholder="Write your review here"></textarea>
+            <button class="submit-button" name="add_comment">Submit Review</button>
             <input type="hidden" name="id_product" value="<?= $_GET['id_product'] ?>">
         </form>
     <?php

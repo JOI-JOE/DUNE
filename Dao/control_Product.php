@@ -18,15 +18,6 @@ function show_product($kyw = "", $id_brand = 0, $id_color = 0, $id_size = 0, $id
     if ($id_brand > 0) {
         $sql .= " and id_brand ='" . $id_brand . "'";
     }
-    if ($id_color > 0) {
-        $sql .= " and id_color ='" . $id_color . "'";
-    }
-    if ($id_size > 0) {
-        $sql .= " and id_size ='" . $id_size . "'";
-    }
-    if ($id_catergory > 0) {
-        $sql .= " and id_catergory ='" . $id_catergory . "'";
-    }
     $sql .= "  ORDER BY id_product DESC";
     $listproduct = pdo_query($sql);
     return $listproduct;

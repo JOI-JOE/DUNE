@@ -16,3 +16,12 @@ function add_order($id_customer, $date, $status, $address, $total_price)
     VALUES ('$id_customer','$date','$status','$address','$total_price')";
     pdo_execute($sql);
 }
+
+function select_one_order($id_order)
+{
+    $sql = "SELECT * FROM `order` O 
+    INNER JOIN customer CU ON CU.id_customer = O.id_customer
+    WHERE O.id_order = '$id_order'
+    ";
+    return pdo_query_one($sql);
+}

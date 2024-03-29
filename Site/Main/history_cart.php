@@ -2,105 +2,100 @@
     h1 {
         text-align: center;
         margin-bottom: 30px;
-    }
-
-    .order {
-        margin-bottom: 30px;
-        border: 1px solid #000;
-        border-radius: 10px;
-        overflow: hidden;
-        background-color: #000;
-        color: #fff;
-    }
-
-    .order-header {
-        background-color: #333;
-        padding: 3px;
-        color: #fff;
-        text-align: center;
-    }
-
-    h1 {
-        margin: 0;
         font-size: 40px;
+        color: black;
     }
 
-    .order-header p {
-        margin: 5px 0;
+    #my-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 2rem;
+        border: none;
     }
 
-    .order-details {
-        padding: 20px;
+    #my-table th.active {
+        border-bottom: 2px solid yellow;
+
     }
 
-    .product-info {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
+    #my-table th,
+    #my-table td {
+        padding: 8px;
+        text-align: center;
+        color: black;
     }
 
-    .product-info img {
-        max-width: 100px;
-        margin-right: 20px;
-        border-radius: 5px;
+    #my-table a {
+        cursor: pointer;
     }
 
-    .product-text p {
-        margin: 5px 0;
-        font-size: 18px;
+    #my-table a:hover {
+        text-decoration: underline;
     }
 
-    .product-text p:last-child {
-        margin-bottom: 0;
-    }
 
-    .order-total {
+    #my-table th {
+        background-color: #f2f2f2;
         font-weight: bold;
-        text-align: right;
-        padding-top: 10px;
-        border-top: 1px solid #fff;
-        margin-top: 10px;
+    }
+
+    #my-table tr:nth-child(even) {
+        background-color: #f2f2f2;
     }
 </style>
-</style>
-<div class="his container">
-    <h1>Order History</h1>
-    <?php
-    foreach ($orders as $order) {
-        extract($order);
-        echo '
-        <div class="order">
-        <div class="order-header">
-            <h2>Order: ' . $id_order . '</h2>
-            <p>Date: ' . $date_order . '</p>
-            <p>Total: $' . $total_price . '</p>
-        </div>
-        ';
-    }
-    ?>
+<div class=" container">
+    <h1>My Order</h1>
+    <table id="my-table">
+        <thead>
+            <tr>
+                <th>1</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="active">All Order</th>
+                <th>Wait For Pay</th>
+                <th>Wait for confirmation</th>
+                <th>Processing</th>
+                <th>Completed</th>
+            </tr>
+        </tbody>
+    </table>
+    <table id="my-table">
+        <thead>
+            <tr>
+                <th>Id_Order</th>
+                <th>Date</th>
+                <th>Receiver</th>
+                <th>Total</th>
+                <th>State</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($orders as $order) {
+                extract($order);
+                echo '
+                <tr>
+                <td>' . $id_order . '</td>
+                <td>' . $date_order . '</td>
+                <td>' . $name_customer . '</td>
+                <td>' . $total_price . '$</td>
+                <td>' . $status_order . '</td>
+                <td><a href="../Main/index.php?detail_order=' . $id_order . '">See Detail</a></td>
+            </tr>
+                ';
+            }
+            ?>
 
-    <?php
-    foreach ($list_cart_his as $ls) {
-        extract($ls);
-        echo '
-        <div class="order-total">
-            <p>Date: ' . $date_order . '</p>
-        </div>
-        <div class="order-details">
-        <div class="product-info">
-            <img src="../../Content/Images/product/' . $img_product . '" alt="">
-            <div class="product-text">
-                <p>Product: ' . $name_product . '</p>
-                <p>Price: ' . $price . '$</p>
-            </div>
-        </div>
-        </div> 
-        
-        
-        ';
-    }
-    ?>
 
-</div>
+
+        </tbody>
+    </table>
 
 </div>

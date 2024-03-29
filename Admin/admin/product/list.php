@@ -1,7 +1,7 @@
 <div>
     <h1 class="alert alert-success" style="color: green"> Danh sách Product</h1>
 
-    <form action="#" method="post">
+    <form method="post">
         <input type="text" name="kyw" id="" style="height: 37px;width: 200px;border-radius: 7px;;">
         <select name="id_brand" id="" style="height: 37px;width: 70px;border-radius: 7px;;">
             <option value="0" select>ALL</option>
