@@ -8,18 +8,6 @@ function comment_insert($id_customer, $id_product, $content_comment, $date_comme
     pdo_execute($sql);
 }
 
-// function comment_delete($id_comment)
-// {
-//     $sql = "DELETE FROM `comment` WHERE id_comment = '$id_comment'";
-//     if (is_array($id_comment)) {
-//         foreach ($id_comment as $comment) {
-//             pdo_execute($sql, $comment);
-//         }
-//     } else {
-//         pdo_execute($sql);
-//     }
-// }
-
 function show_comment()
 {
     $sql = "SELECT * FROM `comment` ORDER BY `date_comment` DESC";
