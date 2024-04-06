@@ -1,7 +1,5 @@
-
-
 <div>
-<h1 class="alert alert-success" style="color: green"> Danh sách size </h1>
+    <h1 class="alert alert-success" style="color: green"> Danh sách size </h1>
     <table class="table ">
         <thead>
             <tr class="table-success">
@@ -12,31 +10,29 @@
             </tr>
         </thead>
         <tbody>
-        <?php
-              foreach($listsize as $size) {
+            <?php
+            foreach ($listsize as $size) {
                 extract($size);
-                $editsize=   "index.php?act=editsize&id_size=".$id_size;
-                $deletesize= "index.php?act=deletesize&id_size=".$id_size;
-    
+                $editsize =   "index.php?act=editsize&id_size=" . $id_size;
+
                 echo '<tr>
                 <td></td>
-                <td>'.$id_size.'</td>
-                <td>'.$name_size.'</td>
-                <td> <a href="'.$editsize.'" class="btn btn-outline-success">edit</a>
-                <a href="'.$deletesize.'" class="btn btn-outline-success">delete</a></td>
+                <td>' . $id_size . '</td>
+                <td>' . $name_size . '</td>
+                <td> <a href="' . $editsize . '" class="btn btn-outline-success">edit</a>
                </tr>';
-            }  
-             ?>   
-        
+            }
+            ?>
+
         </tbody>
-       
-  </table>
-        <tfoot> 
-            <td colspan="4">
+
+    </table>
+    <tfoot>
+        <td colspan="4">
             <button type="button" class="btn btn-primary">chọn tất cả </button>
             <button type="button" class="btn btn-primary">xóa tất cả </button>
-            <button type="button" class="btn btn-primary">xóa các mục đã chọn </button>      
-            <a href="index.php?act=addsize" class="btn btn-primary" > thêm mới  </a>
-            </td>    
-       </tfoot>
+            <button type="button" class="btn btn-primary">xóa các mục đã chọn </button>
+            <a href="index.php?act=addsize" class="btn btn-primary"> thêm mới </a>
+        </td>
+    </tfoot>
 </div>

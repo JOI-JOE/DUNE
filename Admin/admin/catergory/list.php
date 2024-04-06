@@ -1,7 +1,5 @@
-
-
 <div>
-<h1 class="alert alert-success" style="color: green"> Danh sách catergory</h1>
+    <h1 class="alert alert-success" style="color: green"> Danh sách catergory</h1>
     <table class="table ">
         <thead>
             <tr class="table-success">
@@ -12,30 +10,28 @@
             </tr>
         </thead>
         <tbody>
-        <?php
-              foreach($listcatergory as $catergory) {
+            <?php
+            foreach ($listcatergory as $catergory) {
                 extract($catergory);
-                $editcatergory =   "index.php?act=editcatergory&id_catergory=".$id_catergory;
-                $deletecatergory = "index.php?act=deletecatergory&id_catergory=".$id_catergory;
-    
+                $editcatergory =   "index.php?act=editcatergory&id_catergory=" . $id_catergory;
+
                 echo '<tr>
                 <td></td>
-                <td>'.$id_catergory.'</td>
-                <td>'.$name_catergory.'</td>
-                <td> <a href="'.$editcatergory.'"  class="btn btn-outline-success">edit</a>
-                <a href="'.$deletecatergory.'"  class="btn btn-outline-success">delete</a></td>
+                <td>' . $id_catergory . '</td>
+                <td>' . $name_catergory . '</td>
+                // <td> <a href="' . $editcatergory . '"  class="btn btn-outline-success">edit</a>
                </tr>';
-            }  
-             ?> 
+            }
+            ?>
         </tbody>
-       
-  </table>
-        <tfoot> 
-            <td colspan="4">
+
+    </table>
+    <tfoot>
+        <td colspan="4">
             <button type="button" class="btn btn-primary">chọn tất cả </button>
             <button type="button" class="btn btn-primary">xóa tất cả </button>
-            <button type="button" class="btn btn-primary">xóa các mục đã chọn </button>      
-            <a href="index.php?act=addcatergory" class="btn btn-primary" > thêm mới  </a>
-            </td>    
-       </tfoot>
+            <button type="button" class="btn btn-primary">xóa các mục đã chọn </button>
+            <a href="index.php?act=addcatergory" class="btn btn-primary"> thêm mới </a>
+        </td>
+    </tfoot>
 </div>

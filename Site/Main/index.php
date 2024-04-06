@@ -8,13 +8,14 @@ require "../../Dao/control_Cart.php";
 require '../../Dao/control_Color.php';
 require '../../Dao/control_Size.php';
 require '../../Dao/control_Catergory.php';
-require '../../Dao/control_History_Cart.php';
 require '../../Dao/control_Comment.php';
 
 
 
 
 extract($_REQUEST);
+
+
 // ---------------- PAGE MEN ---------------- //
 if (exist_param('men', $_REQUEST)) {
     $list_cate = loadall_catergory();
@@ -83,67 +84,75 @@ if (exist_param('men', $_REQUEST)) {
     $VIEW_NAME = "../Product/checkout_ui.php";
     // ============== DETAIL PRODUCTS ================= //
 } elseif (exist_param('id_product', $_REQUEST)) {
+    $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
     $products = show_product_one($id_product);
     $box_comment = comment_select_by_product($id_product);
     extract($products);
-    $color = loadall_color();
+    // $color = loadall_color();
     $size = loadall_size();
     increase_view_product($id_product);
     if (isset($_POST['add_comment'])) {
         $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
-        // echo "hau dep tai" . "<br>";
-        // echo $id_product . "<br>";
-        // echo $id_customer  . "<br>";
-        // echo $content_comment;
         if (!empty($content_comment) && !comment_exists($id_customer, $id_product)) {
             header("Refresh: 0.1;");
             $dateOrder = date('Y-m-d');
             comment_insert($id_customer, $id_product, $content_comment, $dateOrder);
         }
     }
-    $VIEW_NAME = "../Product/detail_ui.php";
-    // ============== ADD PRODUCTS TO CART ================= //
-} elseif (exist_param('add_cart', $_REQUEST)) {
-    $id_product = $_REQUEST['add_cart'];
-    if (isset($_POST['name_size'])) {
-        $choose_size = $_POST['name_size'];
-        update_size_one($id_product, $choose_size);
-    }
-    $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
+    if (isset($_POST['btn_cart'])) {
+        $quantity = 1;  // Initialize with 1 for adding a new item
+        if (check_product_in_cart($id_customer, $id_product, $choose_size)) {
+            $quantity += get_product_quantity_in_cart($id_customer, $id_product, $choose_size);
+            update_quatity($id_customer, $id_product, $choose_size, $quantity);
+            $productData = [];
 
-    if (check_product_in_cart($id_customer, $id_product)) {
-        update_cart_1($id_product);
-    } else {
-        add_to_cart($id_customer, $id_product);
+            $productData['img'] = $img_product;
+            $productData['choose_size'] = $choose_size;
+            $productData['quantity'] = $quantity;
+
+            header("Refresh:3");
+        } else {
+            add_to_cart($id_customer, $id_product, $quantity, $choose_size);
+            $add_data = [];
+            $add_data['img'] = $img_product;
+            $add_data['choose_size'] = $choose_size;
+            header("Refresh:2");
+        }
     }
-    $VIEW_NAME = "../Product/checkout_ui.php";
-    // ============== ADD CART TO ORDER ITEM ================= //
+    $VIEW_NAME = "../Product/detail_ui.php";
 } elseif (exist_param('ad_orI', $_REQUEST)) {
     include_once "../Product/check_last.php";
     $VIEW_NAME = "../Product/check_last_ui.php";
     // ============== CHECK LAST CART ================= //
 } elseif (exist_param('ck_ls', $_REQUEST)) {
-    if (isset($_REQUEST['ck_ls'])) {
-        update_cart_remove_1();
-    }
     $VIEW_NAME = "home.php";
     // ============== CHECK HISTORY CART ================= //
 } elseif (exist_param('his_cart', $_REQUEST)) {
     require "history.php";
     $VIEW_NAME = "history_cart.php";
+} elseif (exist_param('cancel_order', $_REQUEST)) {
+    require "history.php";
+    $VIEW_NAME = "history_cart.php";
 } elseif (exist_param('detail_order', $_REQUEST)) {
-    $id_order = $_REQUEST['detail_order'];
     require "../../Dao/control_Order.php";
+    require "../../Dao/control_History_Cart.php";
+
+    $id_order = $_REQUEST['detail_order'];
     $list_order = select_one_order($id_order);
+
     extract($list_order);
+
     $VIEW_NAME = "detail_his_order.php";
     // ============== CHECKOUT CART ================= //
 } elseif (exist_param('checkout', $_REQUEST)) {
+
     $VIEW_NAME = "../Product/checkout_ui.php";
     // ============== DELETE CART ================= //
 } elseif (exist_param('del_cart', $_REQUEST)) {
     $id_cart = $_REQUEST['del_cart'];
     header("Refresh: 0.2; url=../Main/index.php?cart");
+    if (empty($id_cart)) {
+    }
     delete_cart($id_cart);
     $VIEW_NAME = "../Product/checkout_ui.php";
     // ==============  DELETE ALL CART ================= //

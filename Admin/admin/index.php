@@ -1,18 +1,16 @@
 <?php
 
-
-session_start(); // Ensure session is started
+session_start();
 
 defined('SITE_URL') || define('SITE_URL', 'http://localhost/BOX_PHP/DUNE');
 
 function check_login()
 {
     if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'boss') {
-        // Check for both Admin/ and BOX_PHP/DUNE/Admin/ paths
         if (str_contains($_SERVER['REQUEST_URI'], '/Admin/') || str_contains($_SERVER['REQUEST_URI'], '/BOX_PHP/DUNE/Admin/')) {
             $_SESSION['request_uri'] = $_SERVER['REQUEST_URI'];
             header("Location: " . SITE_URL . "/Site/Main/index.php?return=" . rawurlencode($_SERVER['REQUEST_URI']));
-            exit; // Terminate script execution
+            exit;
         }
     }
 }
@@ -27,6 +25,8 @@ include "../model/sport.php";
 include "../model/catergory.php";
 include "../model/product.php";
 include "../model/customer.php";
+include "../model/comment.php";
+include "../model/order.php";
 
 
 include "header.php";
@@ -41,9 +41,14 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             break;
         case 'addbrand':
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+
                 $name_brand = $_POST['name_brand'];
-                insert_brand($name_brand);
-                $thongbao = "them thanh cong";
+                if (check_brand($name_brand)) {
+                    $thongbao = "Không để trùng";
+                } else {
+                    insert_brand($name_brand);
+                    $thongbao = "them thanh cong";
+                }
             }
             include "brand/add.php";
             break;
@@ -247,9 +252,22 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "product/list.php";
             break;
 
+        case 'detailproduct':
+
+            if (isset($_GET['id_product']) && ($_GET['id_product'] > 0)) {
+                $product = loadone_product($_GET['id_product']);
+            }
+            $listbrand = loadall_brand();
+            $listcolor = loadall_color();
+            $listsport = loadall_sport();
+            $listsize = loadall_size();
+            $listcatergory = loadall_catergory();
+
+            include "product/list-ct.php";
+            break;
+
         case 'addproduct':
             if (isset($_POST['themsp']) && ($_POST['themsp'])) {
-
                 $name_product = $_POST['name_product'];
                 $id_brand = $_POST['id_brand'];
                 $id_color = $_POST['id_color'];
@@ -258,14 +276,15 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $id_catergory = $_POST['id_catergory'];
                 $sale = $_POST['sale'];
                 $price = $_POST['price'];
-                $quanity = $_POST['quanity'];
+                $quanity = $_POST['quantity'];
                 $date_product = $_POST['date_product'];
                 $view = $_POST['view'];
                 $description = $_POST['description'];
-
-
                 $file = $_FILES['img_product'];
                 $img_product = $file['name'];
+                // if (check_name_product($name_product)) {
+                //     $thongbao = "San pham khong duoc trung";
+                // } else {
                 move_uploaded_file($file['tmp_name'], "../../Content/Images/product/" . $img_product);
                 insert_product($name_product, $id_brand, $id_color, $id_sport, $id_size, $id_catergory, $img_product, $sale, $price, $quanity, $date_product, $view, $description);
                 $thongbao = "them thanh cong";
@@ -314,7 +333,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $description = $_POST['description'];
                 $file = $_FILES['img_product'];
                 $img_product = $file['name'];
-                move_uploaded_file($file['tmp_name'], "../../Content/Images/product/" . $img_product);
+                move_uploaded_file($file['tmp_name'], "../upload/" . $img_product);
                 update_product($id_product, $name_product, $id_brand, $id_color, $id_sport, $id_size, $id_catergory, $img_product, $sale, $price, $quanity, $date_product, $view, $description);
                 $thongbao = "them thanh cong";
             }
@@ -335,11 +354,28 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
             //comment    
         case 'listcomment':
-
+            $st_comments = statistic_comment();
             include "comment/list.php";
             break;
 
+            //detail comment    
+        case 'detail':
+            if (isset($_GET['id_product'])) {
+                $id_product = $_GET['id_product'];
+                $comments = comment_select_by_product($id_product);
+            }
 
+            include "comment/detail.php";
+            break;
+
+            //delete comment    
+        case 'del_cmt':
+            $id_comment = $_GET['id_comment'];
+            comment_delete($id_comment);
+            $comments = comment_select_by_product($_GET['id_product']);
+
+            include "comment/detail.php";
+            break;
 
             //customer
         case 'listcustomer':
@@ -358,13 +394,30 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
             //order
         case 'listorder':
+            $status = isset($_POST['status_order']) ? $_POST['status_order'] : "";
+            $id_order = isset($_POST['id_order']) ? $_POST['id_order'] : "";
+            $listorder = select_order($id_order, $status);
             include "order/list.php";
             break;
 
-            //order
-        case 'listorder_item':
-            include "order_item/list.php";
+            //update order
+        case 'updateOrd':
+            // $listorder = show_order();
+            // echo $_GET['id_order'];
+            $one_order = show_one_order($_GET['id_order']);
+            extract($one_order);
+            $his_order = select_his_cart($_GET['id_order'], $id_customer);
+            if (isset($_POST['capnhatOrder'])) {
+                $id_order = $_GET['id_order'];
+                $status_order = $_POST['status_order'];
+                update_status_order($id_order, $status_order);
+                $thongbao = "Update Successfully";
+            }
+
+            include "order/update.php";
             break;
+
+
 
         default:
             include "home.php";

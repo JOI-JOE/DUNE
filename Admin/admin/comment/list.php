@@ -1,58 +1,47 @@
-
-
+<style>
+    table th,
+    td {
+        text-align: center;
+    }
+</style>
 <div>
-<h1 class="alert alert-success" style="color: green"> Danh sách comment </h1>
+    <h1 class="alert alert-success" style="color: green"> Danh sách comment </h1>
     <table class="table ">
         <thead>
             <tr class="table-success">
-                <th scope="col">#</th>
-                <th scope="col">mã comment</th>
-                <th scope="col">mã customer</th>
-                <th scope="col">mã product</th>
-                <th scope="col">content</th>
-                <th scope="col">date comment </th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">New</th>
+                <th scope="col">Old</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
+            <?php
+            foreach ($st_comments as $comment) {
+                extract($comment);
+                echo '
+                <tr>
+                <td>' . $name_product . '</td>
+                <td>' . $quantity . '</td>
+                <td>' . $newest_comment_date . '</td>
+                <td>' . $oldest_comment_date . '</td>
+                <td>
+                <a href="index.php?act=detail&id_product=' . $id_product . '" class="button-86 btn btn-outline-success">Detail</a>
+                </td>
+                </tr>
+                ';
+            }
+            ?>
             <tr>
-            <th scope="row"></th>
-                <td>1</td>
-                <td>nike</td>
-                <td>nike</td>
-                <td>nike</td>
-                <td>nike</td>
-                
-                <td><button  class="btn btn-outline-success">xóa</button> <button class="btn btn-outline-success">sửa</button></td>
+
             </tr>
-            <tr>
-            <th scope="row"></th>
-                <td>2</td>
-                <td>adidas</td>
-                <td>adidas</td>
-                <td>adidas</td>
-                <td>adidas</td>
-                <td><button  class="btn btn-outline-success">xóa</button> <button class="btn btn-outline-success">sửa</button></td>
-            </tr>
-            <tr>
-            <th scope="row"></th>
-                <td>3</td>
-                <td>dior</td>
-                <td>dior</td>
-                <td>dior</td>
-                <td>dior</td>
-                <td><button  class="btn btn-outline-success">xóa</button> <button class="btn btn-outline-success">sửa</button></td>
-            </tr>
-        
         </tbody>
-       
-  </table>
-        <tfoot> 
-            <td colspan="4">
-            <button type="button" class="btn btn-primary">chọn tất cả </button>
+
+    </table>
+    <tfoot>
+        <!-- <td colspan="4">
             <button type="button" class="btn btn-primary">xóa tất cả </button>
-            <button type="button" class="btn btn-primary">xóa các mục đã chọn </button>      
-            <a href="" class="btn btn-primary" > thêm mới  </a>
-            </td>    
-       </tfoot>
+        </td> -->
+    </tfoot>
 </div>

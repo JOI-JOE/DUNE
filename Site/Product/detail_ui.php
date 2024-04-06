@@ -6,9 +6,10 @@
         margin: 20px;
     }
 
-    .product-image {
-        max-width: 100%;
-        height: auto;
+    .product-image img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -20,7 +21,7 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .product-description h2 {
+    .product-description .main-img .product-description h2 {
         margin-top: 0;
         font-size: 30px;
         font-family: var(--body-font);
@@ -168,14 +169,70 @@
     .customer-comment strong {
         margin-right: 20px;
     }
+
+
+    .cookiesContent {
+        position: absolute;
+        top: 17%;
+        left: 5%;
+        /* transform: translate(-50%, -50%); */
+
+        width: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        color: #000;
+        text-align: center;
+        border-radius: 20px;
+        padding: 10px 10px 50px;
+        transition: 0.3s ease-in-out;
+
+        button.close {
+            width: 30px;
+            font-size: 20px;
+            color: #c0c5cb;
+            align-self: flex-end;
+            background-color: transparent;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 82px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        button.accept {
+            /* background-color: #ed6755; */
+            background-color: hsl(193, 20%, 30%);
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            padding: 14px;
+            font-size: 16px;
+            color: white;
+            box-shadow: 0px 6px 18px -5px hsl(193, 20%, 30%);
+            ;
+        }
+    }
+
+    a {
+        color: #000000;
+    }
 </style>
 
 <div class="detail title-product container">
 
     <div class="Box">
         <!-- Grid 1: Product Image -->
-        <div>
-            <img src="../../Content/Images/product/<?= $img_product ?>" alt="" class="product-image">
+        <div class="product-image">
+            <img src="../../Content/Images/product/<?= $img_product ?>" alt="">
         </div>
 
         <!-- Grid2: Description and Review Box -->
@@ -210,19 +267,17 @@
                         </div>
                     </div>
                 </div>
-                <form action="../Main/index.php?add_cart=<?= $id_product ?>" method="POST">
+                <form action="" method="POST">
                     <div class="select-container">
                         <label for="size">Size:</label>
 
-                        <select name="name_size" id="size">
-                            <?php
-                            foreach ($size as $sz) {
-                                extract($sz);
-                                echo "  <option  value='$sz[id_size]'>$sz[name_size]</option>\n"; // Use double quotes and proper array access
-                            }
-                            ?>
+                        <select name="choose_size" id="size">
+                            <?php foreach ($size as $sz) : ?>
+                                <option value="<?= $sz['name_size'] ?>"><?= $sz['name_size'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
+
                     <div class="select-container">
 
 
@@ -231,9 +286,14 @@
                     <div class="select-container">
                         <?php
                         if (isset($_SESSION['user'])) {
-                            echo '<form action="../Main/index.php?add_cart=' . $id_product . '" method="POST">
-                        <input type="submit" class="button-27" value="Add To Card">
-                        </form>';
+                            if (isset($_GET['add_cart'])) {
+                                $id_product = $_GET['add_cart'];
+                            }
+                            echo '
+                        <input type="submit" name="btn_cart" class="button-27" value="Add To Card" " onclick="buttonHandler() id="button_add_cart">
+                        
+                        <input type="hidden" name="id_product" value="' . $id_product . '">
+                        ';
                         }
                         ?>
 
@@ -287,9 +347,39 @@
     <?php
     }
     ?>
+    <?php
+    if (isset($productData)) {
+        echo '
+        <div class="cookiesContent" id="cookiesPopup">
+        <button class="close">✖</button>
+        <img src="../../Content/Images/product/' . $productData['img'] . '" alt="cookies-img" />
+        <p>You choose more SIZE: ' . $productData['choose_size'] . ' <br>
+        And quantity: ' . $productData['quantity']  . '
+        </p>
+        <button class="accept"><a href="../Main/index.php?cart">That"s Cool!</a></button>
+        </div>
+        ';
+    }
+    ?>
+    <?php
+    if (isset($add_data)) {
+        echo '
+        <div class="cookiesContent" id="cookiesPopup">
+        <button class="close">✖</button>
+        <img src="../../Content/Images/product/' .  $add_data['img'] . '" alt="cookies-img" />
+        <p>You choose product ' . $name_product . ' / SIZE: ' . $add_data['choose_size'] . '</p>
+        <button class="accept"><a href="../Main/index.php?cart">Yeah my bro!</a></button>
+        </div>
+        ';
+    }
+
+    ?>
+
+
 
 
 </div>
+
 <script>
     function toggleComments() {
         var hiddenComments = document.querySelectorAll('.customer-comment.hidden');
@@ -311,5 +401,18 @@
             });
             button.textContent = 'Show More Comments';
         }
+    }
+    const closeButton = document.querySelector('.close');
+    closeButton.addEventListener('click', function() {
+        const cookiesPopup = document.getElementById('cookiesPopup');
+        cookiesPopup.style.display = 'none'; // Hides the popup
+    });
+
+    function buttonHandler() {
+        document.getElementById("button_add_cart").disabled = true;
+        setTimeout(function() {
+            document.getElementById("button_add_cart").disabled = false;
+        }, 5000);
+
     }
 </script>

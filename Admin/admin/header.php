@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Admin Dune</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -30,8 +30,8 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <style>
-        .pad_r{
-            padding-right:50px;
+        .pad_r {
+            padding-right: 50px;
         }
     </style>
 </head>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0">ADMIN</h6>
-                        
+
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -68,12 +68,12 @@
                     <a href="index.php?act=listbrand" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>brand</a>
                     <a href="index.php?act=listcolor" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>color</a>
                     <a href="index.php?act=listsport" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>sport</a>
-                    <a href="index.php?act=listsize" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>size</a> 
+                    <a href="index.php?act=listsize" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>size</a>
                     <a href="index.php?act=listcatergory" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>catergory</a>
                     <a href="index.php?act=listproduct" class="nav-item nav-link"><i class="fa fa-table me-2"></i>product</a>
                     <a href="index.php?act=listcustomer" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>customer</a>
-                    <a href="index.php?act=dstk" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Thong ke</a>
-                    <a href="index.php?act=dskh" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Tai khoan</a>
+                    <a href="index.php?act=listcomment" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Comment</a>
+                    <a href="index.php?act=listorder" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Order</a>
                 </div>
             </nav>
         </div>
@@ -171,5 +171,3 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-
-

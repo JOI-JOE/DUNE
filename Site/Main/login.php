@@ -12,7 +12,7 @@
         if (isset($_SESSION['user'])) {
             if ($_SESSION['user']['role'] === "boss") {
                 echo
-                '<a href="http://localhost/BOX_PHP/DUAN/admin/" class="sub-menu-link">
+                '<a href="http://localhost/BOX_PHP/DUNE/Admin/admin/" class="sub-menu-link">
                 <p>Admin</p>
                 <span>></span>
                 </a>';

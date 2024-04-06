@@ -39,6 +39,12 @@ function select_all_product()
     return pdo_query($sql);
 }
 
+// ------------------ Function For QUANTIY ------------------ //
+function update_quantity($id_product, $quantity)
+{
+    $sql = "UPDATE `product` SET `quanity`='$quantity' WHERE `id_product`='$id_product'";
+    pdo_execute($sql);
+}
 
 // ------------------ Function For MEN ------------------ //
 

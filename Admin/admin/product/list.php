@@ -1,7 +1,7 @@
 <div>
     <h1 class="alert alert-success" style="color: green"> Danh sách Product</h1>
 
-    <form method="post">
+    <form action="#" method="post">
         <input type="text" name="kyw" id="" style="height: 37px;width: 200px;border-radius: 7px;;">
         <select name="id_brand" id="" style="height: 37px;width: 70px;border-radius: 7px;;">
             <option value="0" select>ALL</option>
@@ -15,7 +15,10 @@
 
 
         <button type="submit" name="listok" value="GO" class="btn btn-success">check</button>
+
     </form>
+
+
     <br>
     <table class="table ">
         <thead>
@@ -23,26 +26,21 @@
                 <th scope="col">#</th>
                 <th scope="col">mã product</th>
                 <th scope="col">name product</th>
-                <th scope="col">brand </th>
-
-
-                <th scope="col">size </th>
-
+                <th scope="col">price </th>
+                <th scope="col">quanity</th>
                 <th scope="col">view</th>
                 <th scope="col">image</th>
                 <th scope="col"></th>
             </tr>
         </thead>
-        <!-- <img src="../../../Content/Images/product/" alt=""> -->
         <tbody>
             <?php
             foreach ($listproduct as $product) {
                 extract($product);
                 $editproduct =   "index.php?act=editproduct&id_product=" . $id_product;
-                $deleteproduct = "index.php?act=deleteproduct&id_product=" . $id_product;
-
+                // $deleteproduct = "index.php?act=deleteproduct&id_product=" . $id_product;
+                $detailproduct = "index.php?act=detailproduct&id_product=" . $id_product;
                 $hinhpath = "../../Content/Images/product/" . $img_product;
-                // $hinhpath = "../upload/" . $img_product;
                 if (is_file($hinhpath)) {
                     $hinhanh = "<img src='" . $hinhpath . "' width='80'>";
                 } else {
@@ -53,24 +51,18 @@
                 echo '<tr>
                 <td></td>
                 <td>' . $id_product . '</td>
-                <td>' . $name_product . '</td>
-                <td>' . $name_brand . '</td>
-               
-                <td>' . $name_size . '</td>
-              
-
-              
+                <td> ' . $name_product . '</td>
+                <td>' . $price . '</td>
+                <td>' . $quanity . '</td>
                 <td>' . $view . '</td>
                 <td>' . $hinhanh . '</td>
                 <td> <a href="' . $editproduct . '"  class="btn btn-outline-success">edit</a>
-                <a href="' . $deleteproduct . '"  class="btn btn-outline-success">delete</a></td>
-               </tr>';
+                <a href="' . $detailproduct . '"  class="btn btn-outline-success">detail</a>
+                </td>
+                </tr>';
             }
             ?>
-
-
-
-
+            <!-- <a href="' . $deleteproduct . '"  class="btn btn-outline-success">delete</a> -->
         </tbody>
 
     </table>
