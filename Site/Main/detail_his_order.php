@@ -103,7 +103,9 @@
     }
 </style>
 <div class="container">
-    <h2 style="color:black;font-weight:600">CHI TIẾT ĐƠN HÀNG</h2>
+    <h2 style="color:black;font-weight:600">
+        <a href="../Main/index.php?his_cart"> CHI TIẾT ĐƠN HÀNG</a>
+    </h2>
     <div class="order-details">
         <div class="right">
 

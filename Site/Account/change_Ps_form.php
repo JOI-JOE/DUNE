@@ -28,19 +28,19 @@
                     <!-- INPUT EMAIL -->
                     <div class="input-box">
                         <span class="details">Old password</span>
-                        <input type="text" name="old_password" placeholder="Enter your old password">
+                        <input type="password" name="old_password" placeholder="Enter your old password">
                     </div>
 
                     <!-- INPUT PASSWORD -->
                     <div class="input-box">
                         <span class="details">New password</span>
-                        <input type="text" name="new_password" placeholder="Enter your new password">
+                        <input type="password" name="new_password" placeholder="Enter your new password">
                     </div>
 
                     <!-- INPUT CONFIRM PASSWORD -->
                     <div class="input-box">
                         <span class="details">Confirm new password</span>
-                        <input type="text" name="confirm_new_password" placeholder="Confirm your password">
+                        <input type="password" name="confirm_new_password" placeholder="Confirm your password">
                     </div>
                 </div>
 

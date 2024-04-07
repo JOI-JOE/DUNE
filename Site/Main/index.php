@@ -84,7 +84,7 @@ if (exist_param('men', $_REQUEST)) {
     $VIEW_NAME = "../Product/checkout_ui.php";
     // ============== DETAIL PRODUCTS ================= //
 } elseif (exist_param('id_product', $_REQUEST)) {
-    $id_customer = $_SESSION['user']['id_customer'] ?  $_SESSION['user']['id_customer'] : "";
+    $id_customer = isset($_SESSION['user']['id_customer']) ?  $_SESSION['user']['id_customer'] : "";
     $products = show_product_one($id_product);
     $box_comment = comment_select_by_product($id_product);
     extract($products);

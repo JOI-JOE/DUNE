@@ -98,7 +98,7 @@
 
     <div class="col-md-4 mb-3">
         <label for="inputPassword4" class="form-label">VIEW</label>
-        <input class="form-control" type="text" name="view" value="0" id="view">
+        <input class="form-control" type="text" name="view" value="0" id="view" disabled>
     </div>
 
     <div class="mb-3">
