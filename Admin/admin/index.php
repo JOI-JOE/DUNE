@@ -379,6 +379,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
             //customer
         case 'listcustomer':
+            // $statistic = statistic_product();
             $listcustomer = loadall_customer();
             include "customer/list.php";
             break;
@@ -417,7 +418,13 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "order/update.php";
             break;
 
-
+        case 'liststatistic':
+            $box_state = count_status();
+            $box_statistic =  statistic_product();
+            $box_order = statistic_order();
+            // print_r($box_statistic);
+            include "statistic/list.php";
+            break;
 
         default:
             include "home.php";

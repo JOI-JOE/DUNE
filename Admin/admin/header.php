@@ -74,6 +74,7 @@
                     <a href="index.php?act=listcustomer" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>customer</a>
                     <a href="index.php?act=listcomment" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Comment</a>
                     <a href="index.php?act=listorder" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Order</a>
+                    <a href="index.php?act=liststatistic" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Statistic</a>
                 </div>
             </nav>
         </div>
