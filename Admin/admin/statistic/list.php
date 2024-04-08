@@ -73,33 +73,6 @@
     <table id="my-table">
         <thead>
             <tr>
-                <th>#Order</th>
-                <th>Name Customer</th>
-                <th>Min Price</th>
-                <th>Max Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($box_order  as $or) {
-
-                extract($or);
-                echo '
-            <tr>
-            <td>#' . $id_order . '</td>
-            <td>' . $name_customer . '</td>
-            <td>' . $price_min . '$</td>
-            <td>' . $price_max . '$</td>
-            </tr>
-            ';
-            }
-            ?>
-        </tbody>
-    </table>
-
-    <table id="my-table">
-        <thead>
-            <tr>
                 <th>Name Product</th>
                 <th>Min Quantity</th>
                 <th>Max Quantity</th>
@@ -121,5 +94,33 @@
             ?>
         </tbody>
     </table>
+
+    <table id="my-table">
+        <thead>
+            <tr>
+                <th>Name Customer</th>
+                <th>Min Price</th>
+                <th>Max Price</th>
+                <th>Order Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($box_order  as $or) {
+
+                extract($or);
+                echo '
+            <tr>
+            <td>' . $name_customer . '</td>
+            <td>' . $price_min . '$</td>
+            <td>' . $price_max . '$</td>
+            <td>' . $order_count . '</td>
+            </tr>
+            ';
+            }
+            ?>
+        </tbody>
+    </table>
+
 
 </div>

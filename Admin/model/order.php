@@ -81,9 +81,12 @@ function statistic_product()
 
 function statistic_order()
 {
-    $sql = "SELECT O.*, H.*,CU.*,
+    $sql = "SELECT O.*, H.*, CU.*,
     MIN(O.total_price) AS price_min,
-    MAX(O.total_price) AS price_max
+    MAX(O.total_price) AS price_max,
+    AVG(O.total_price) AS average_price,  -- Add average price
+    COUNT(*) AS order_count,                 -- Add order count
+        O.date_order
     FROM `order` O
     JOIN `history_order` H ON H.id_order = O.id_order
     JOIN `customer` CU ON CU.id_customer = O.id_customer
