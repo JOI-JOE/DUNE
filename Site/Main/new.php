@@ -461,7 +461,7 @@
                 </article>
 
                 <article class="sneaker">
-                    <img src="../../Content/Images/New/sale8.jpg" alt="" class="sneaker__img">
+                    <img src="../../Content/Images/New/sale11.jpg" alt="" class="sneaker__img">
                     <span class="sneaker__name">Nike Get 5</span>
                     <span class="sneaker__preci">$149.99</span>
                     <a href="#" class="button-light">04.04.2024 <i class='bx bx-right-arrow-alt button-icon'></i></a>
