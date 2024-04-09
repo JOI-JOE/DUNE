@@ -32,12 +32,14 @@
             <?php
             foreach ($listorder as $order) {
                 extract($order);
+                $alert_status = ($status_order == "Cancelled") ? 'style="color:  #ff0060;"' : 'style="color:  #1b9c85;"';
+
                 echo '
                 <tr>
                 <td>' . $id_order . '</td>
                 <td>' . $name_customer . '</td>
                 <td>' . $date_order . '</td>
-                <td>' . $status_order . '</td>
+                <td ' . $alert_status . '>' . $status_order . '</td>
                 <td>' . $address_order . '</td>
                 <td>' . $total_price . '$</td>
 

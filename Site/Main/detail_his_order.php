@@ -84,7 +84,7 @@
 
     .road_shipping h2 {
         padding: 5px;
-        background-color: hsl(202, 15%, 54%);
+        background-color: #eee;
         ;
         border-radius: 20px;
     }
@@ -94,7 +94,7 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background-color: #fff;
+        background-color: black;
         margin-right: 5px;
     }
 
@@ -146,9 +146,11 @@
             <div class="road_shipping">
 
                 <h2><span class="circle"></span>- Time Order : <?= $date_order ?></h2>
-                <h2> <span class="circle active"></span>Status - <?= $status_order  ?></h2>
-                <!-- <h2> <span class="circle"></span>- Đang giao hàng</h2>
-                <h2> <span class="circle"></span>- Hoàn Tất</h2> -->
+                <?php
+                $alert_status = ($status_order == "Cancelled") ? 'style="color:  #ff0060;"' : 'style="color:  #1b9c85;"';
+                ?>
+                <h2 <?= $alert_status ?>> <span class="circle active"></span>Status - <?= $status_order  ?></h2>
+
             </div>
 
 
