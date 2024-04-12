@@ -17,7 +17,7 @@
     <table class="table ">
         <thead>
             <tr class="table-success">
-                <th scope="col">ID ORDER </th>
+                <th scope="col">#</th>
                 <th scope="col">mã customer</th>
                 <th scope="col">date order</th>
                 <th scope="col">order status</th>

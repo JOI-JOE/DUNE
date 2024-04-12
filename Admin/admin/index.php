@@ -7,9 +7,12 @@ defined('SITE_URL') || define('SITE_URL', 'http://localhost/BOX_PHP/DUNE');
 function check_login()
 {
     if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'boss') {
-        if (str_contains($_SERVER['REQUEST_URI'], '/Admin/') || str_contains($_SERVER['REQUEST_URI'], '/BOX_PHP/DUNE/Admin/')) {
+        $restrictedPaths = ['/Admin/', '/BOX_PHP/DUNE/Admin/', '/model/'];
+        if (array_reduce($restrictedPaths, function ($carry, $path) {
+            return $carry || str_contains($_SERVER['REQUEST_URI'], $path);
+        }, false)) {
             $_SESSION['request_uri'] = $_SERVER['REQUEST_URI'];
-            header("Location: " . SITE_URL . "/Site/Main/index.php?return=" . rawurlencode($_SERVER['REQUEST_URI']));
+            header("Location: " . SITE_URL . "/Site/Main/index.php?return=" . rawurlencode($_SESSION['REQUEST_URI']));
             exit;
         }
     }
@@ -278,7 +281,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $price = $_POST['price'];
                 $quanity = $_POST['quantity'];
                 $date_product = $_POST['date_product'];
-                $view = $_POST['view'];
+                $view = 0;
                 $description = $_POST['description'];
                 $file = $_FILES['img_product'];
                 $img_product = $file['name'];
@@ -351,7 +354,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
 
 
-
             //comment    
         case 'listcomment':
             $st_comments = statistic_comment();
@@ -381,8 +383,35 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         case 'listcustomer':
             // $statistic = statistic_product();
             $listcustomer = loadall_customer();
-            include "customer/list.php";
+            include "Customer/list.php";
             break;
+
+        case 'editcustomer':
+            if (isset($_GET['id_customer'])) {
+                $list_customer = select_one_customer($_GET['id_customer']);
+                extract($list_customer);
+            }
+            include "Customer/update.php";
+            break;
+
+
+
+        case 'updatecustomer':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $name_customer = $_POST['name_customer'];
+                $email_customer = $_POST['email_customer'];
+                $password_customer = $_POST['password_customer'];
+                $address_customer = $_POST['address_customer'];
+                $phone_customer = $_POST['phone_customer'];
+                $role_customer = $_POST['role_customer'];
+                $id_customer = $_POST['id_customer'];
+                update_customer($id_customer, $name_customer, $email_customer, $password_customer, $address_customer, $phone_customer, $role_customer);
+                $thongbao = "them thanh cong";
+            }
+            $listcustomer = loadall_customer();
+            include "Customer/list.php";
+            break;
+
 
 
 

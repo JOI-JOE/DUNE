@@ -70,7 +70,7 @@
         </tbody>
     </table>
 
-    <table id="my-table">
+    <table class="table table-dark table-striped table-sm">
         <thead>
             <tr>
                 <th>Name Product</th>
@@ -95,7 +95,7 @@
         </tbody>
     </table>
 
-    <table id="my-table">
+    <table id="my-table" class="table table-sm">
         <thead>
             <tr>
                 <th>Name Customer</th>

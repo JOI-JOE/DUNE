@@ -107,6 +107,7 @@
                 <option value="Preparing your order" <?= $lock ?>>Preparing your order</option>
                 <option value="Shipped" <?= $lock ?>>Shipped</option>
                 <option value="Delivered" <?= $lock ?>>Delivered</option>
+                <option value="Cancelled" <?= $lock ?>>Cancelled</option>
             </select>
         </div>
 

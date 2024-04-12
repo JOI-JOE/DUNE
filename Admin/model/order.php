@@ -73,7 +73,8 @@ function statistic_product()
     MAX(H.quantity) AS quantity_max
     FROM history_order H
     JOIN `product` P ON H.id_product = P.id_product
-    JOIN `customer` CU ON CU.id_customer = H.id_customer
+    JOIN `order` CU ON CU.id_order = H.id_order
+    WHERE CU.status_order != 'Cancelled'
     GROUP BY H.id_product";
 
     return pdo_query($sql);
@@ -81,17 +82,17 @@ function statistic_product()
 
 function statistic_order()
 {
-    $sql = "SELECT O.*, H.*, CU.*,
+    $sql = "SELECT O.id_customer, CU.*, 
     MIN(O.total_price) AS price_min,
-    MAX(O.total_price) AS price_max,
-    AVG(O.total_price) AS average_price,  -- Add average price
-    COUNT(*) AS order_count,                 -- Add order count
-        O.date_order
-    FROM `order` O
-    JOIN `history_order` H ON H.id_order = O.id_order
-    JOIN `customer` CU ON CU.id_customer = O.id_customer
+    MAX(O.total_price) AS price_max, 
+    AVG(O.total_price) AS average_price, 
+    COUNT(*) AS order_count FROM `order` O 
+    JOIN `customer` CU ON CU.id_customer = O.id_customer 
     WHERE O.status_order != 'Cancelled'
-    GROUP BY O.id_customer";
+    AND
+    O.id_customer IN ( SELECT id_customer FROM `order` 
+    WHERE O.status_order != 'Cancelled'
+    GROUP BY id_customer ) GROUP BY O.id_customer, CU.id_customer";
 
     return pdo_query($sql);
 }

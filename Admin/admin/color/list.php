@@ -31,9 +31,9 @@
     </table>
     <tfoot>
         <td colspan="4">
-            <button type="button" class="btn btn-primary">chọn tất cả </button>
-            <button type="button" class="btn btn-primary">xóa tất cả </button>
-            <button type="button" class="btn btn-primary">xóa các mục đã chọn </button>
+            <!-- <button type="button" class="btn btn-primary">chọn tất cả </button> -->
+            <!-- <button type="button" class="btn btn-primary">xóa tất cả </button> -->
+            <!-- <button type="button" class="btn btn-primary">xóa các mục đã chọn </button> -->
             <a href="index.php?act=addcolor" class="btn btn-primary"> thêm mới </a>
         </td>
     </tfoot>

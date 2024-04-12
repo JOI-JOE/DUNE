@@ -1,25 +1,29 @@
 <?php
-// function insert_size($name_size){
-//     $sql="INSERT INTO size(name_size) VALUES('$name_size')";
-//     pdo_execute($sql);
-// }
 
-// function delete_size($id_size){
-//     $sql="DELETE FROM size WHERE id_size=".$id_size;
-//     pdo_execute($sql);
-// }
- function loadall_customer(){
-    $sql="SELECT * FROM customer ORDER BY id_customer DESC";
-    $listcustomer=pdo_query($sql);
-    return $listcustomer;
- }
-//  function loadone_size($id_size){
-//     $sql="SELECT * FROM size WHERE id_size=".$id_size;
-//     $size=pdo_query_one($sql);
-//     return $size;
-//  }
-//  function update_size($name_size,$id_size){
-//     $sql="UPDATE size SET name_size='".$name_size."' WHERE id_size=".$id_size;
-//     pdo_execute($sql);
-//  }
-?>
+function loadall_customer()
+{
+   $sql = "SELECT * FROM customer ORDER BY id_customer DESC";
+   $listcustomer = pdo_query($sql);
+   return $listcustomer;
+}
+
+function select_one_customer($id_customer)
+{
+   $sql = "SELECT * FROM customer WHERE id_customer=" . $id_customer;
+   return pdo_query_one($sql);
+}
+
+function update_customer($id_customer, $name_customer, $email_customer, $password_customer, $address_customer, $phone_customer, $role)
+{
+   $sql = "UPDATE `customer` 
+   SET 
+   `name_customer`='$name_customer',
+   `email_customer`='$email_customer',
+   `password_customer`='$password_customer',
+   `address_customer`='$address_customer',
+   `phone_customer`='$phone_customer',
+   `role`='$role'
+    WHERE `id_customer`='$id_customer'
+   ";
+   pdo_execute($sql);
+}

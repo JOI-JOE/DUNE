@@ -22,7 +22,7 @@
         <div class="commercial_title ">
             <h1 class="font-container">TODAY JUST GOT EASIER</h1>
             <p>Find You Passion</p>
-            <button class="button-shop">Shop</button>
+            <button class="button-shop"><a href="../Main/index.php?men">Shop</a></button>
         </div>
     </div>
 

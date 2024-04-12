@@ -16,7 +16,7 @@
     <br>
     <div>
       <button type="submit" name="themmoi" value="themmoi" class="btn btn-primary">thêm mới</button>
-      <button type="reset" class="btn btn-primary">nhập lại</button>
+      <!-- <button type="reset" class="btn btn-primary">nhập lại</button> -->
       <a href="index.php?act=listbrand" class="btn btn-primary">danh sách</a>
     </div>
 

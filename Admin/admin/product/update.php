@@ -177,7 +177,7 @@ if (is_file($hinhpath)) {
         <button type="submit" name="capnhat" value="capnhat" class="btn btn-primary">cập nhật </button>
 
 
-        <button type="reset" class="btn btn-primary">nhập lại </button>
+        <!-- <button type="reset" class="btn btn-primary">nhập lại </button> -->
         <a href="index.php?act=listproduct" class="btn btn-primary"> danh sách </a>
     </div>
 
